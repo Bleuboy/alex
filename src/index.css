@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+main {
+  font-family: 'Inter', sans-serif;
+
+  background: url('background.jpg');
+  background-size: cover;
+}
