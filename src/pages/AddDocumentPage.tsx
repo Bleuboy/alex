@@ -3,9 +3,6 @@ import { useNavigate } from 'react-router-dom';
 
 import { useSelector } from 'react-redux';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
-
 import clsx from 'clsx';
 
 import Upload from '../components/Upload';
@@ -53,7 +50,6 @@ const AddDocumentPage = () => {
         <div className="w-full flex justify-center">
           <Button disabled={!files.length} onClick={handleAnalyze}>
             Analyze
-            <FontAwesomeIcon icon={faMagnifyingGlass} />
           </Button>
         </div>
 

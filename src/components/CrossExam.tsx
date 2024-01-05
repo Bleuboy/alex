@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFilePdf, faUser } from '@fortawesome/free-solid-svg-icons';
 
 import { CourtFile, Party, RootState, Testimony } from '../types';
 
@@ -31,12 +29,10 @@ const CrossExam = ({ party, testimonies }: CrossExamProps) => {
     <div className="relative flex flex-col gap-4 w-full">
       <div className="flex flex-row gap-4">
         <span className="flex gap-2 items-center font-semibold rounded-lg px-4 py-2 bg-divider">
-          <FontAwesomeIcon icon={faUser} />
           {party}
         </span>
 
         <Button color="primary" onClick={handlePreviewPDF(files[0])}>
-          <FontAwesomeIcon icon={faFilePdf} />
           Preview PDF
         </Button>
       </div>
