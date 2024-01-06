@@ -30,7 +30,7 @@ const CrossExam = ({ party, testimonies }: CrossExamProps) => {
   return (
     <div className="relative flex flex-col gap-4 w-full">
       <div className="flex flex-row gap-4">
-        <span className="flex gap-2 items-center font-semibold rounded-lg px-4 py-2 bg-divider">
+        <span className="flex gap-2 items-center font-semibold rounded-lg px-4 py-2">
           {party}
         </span>
 
