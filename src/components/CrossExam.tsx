@@ -1,21 +1,36 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-import { CourtFile, Party, RootState, Testimony } from '../types';
+import {
+  Aspect,
+  CourtFile,
+  Filter,
+  Party,
+  RootState,
+  Testimony,
+} from '../types';
 
 import { setPreviewFile } from '../redux/slices/documents';
 
 import Button from './Button';
 import TestimonyBlock from './Testimony';
+import AspectBlock from './Aspect';
 import PDF from './PDF';
 
 interface CrossExamProps {
   party: Party;
+  filter: Filter;
   testimonies: Testimony[];
+  aspects: Aspect[];
 }
 
-const CrossExam = ({ party, testimonies }: CrossExamProps) => {
+const CrossExam = ({ party, filter, testimonies, aspects }: CrossExamProps) => {
   const documents = useSelector((state: RootState) => state.documents);
   const dispatch = useDispatch();
+
+  const partyTestimonies = testimonies.filter(
+    (testimony) => testimony.party == party,
+  );
+  const partyAspects = aspects.filter((aspect) => aspect.party == party);
 
   const previewFile = documents.previewFile;
   const partyFiles =
@@ -30,7 +45,7 @@ const CrossExam = ({ party, testimonies }: CrossExamProps) => {
   return (
     <div className="relative flex flex-col gap-4 w-full">
       <div className="flex flex-row gap-4">
-        <span className="flex gap-2 items-center font-semibold rounded-lg px-4 py-2 bg-divider">
+        <span className="flex gap-2 items-center font-semibold rounded-lg px-4 py-2">
           {party}
         </span>
 
@@ -55,9 +70,13 @@ const CrossExam = ({ party, testimonies }: CrossExamProps) => {
       )}
 
       <div className="flex flex-col gap-4">
-        {testimonies.map((testimony) => (
-          <TestimonyBlock {...testimony} />
-        ))}
+        {filter === 'testimony' &&
+          partyTestimonies.map((testimony) => (
+            <TestimonyBlock {...testimony} />
+          ))}
+
+        {filter === 'aspect' &&
+          partyAspects.map((aspect) => <AspectBlock {...aspect} />)}
       </div>
     </div>
   );
