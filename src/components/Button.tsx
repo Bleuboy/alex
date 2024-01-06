@@ -13,6 +13,7 @@ const Button = ({
   color = 'primary',
   variant = 'button',
   children,
+  className,
   ...props
 }: ButtonProps) => {
   return (
@@ -21,6 +22,7 @@ const Button = ({
       {...props}
       className={clsx(
         'rounded-lg font-semibold text-white flex justify-center items-center gap-2',
+        className,
         disabled ? 'opacity-60 cursor-not-allowed' : 'hover:opacity-80',
         variant === 'button' ? 'px-4 py-2' : 'p-2 text-sm aspect-square',
         {
