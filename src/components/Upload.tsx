@@ -1,9 +1,6 @@
 import { useCallback, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFileCirclePlus, faTrash } from '@fortawesome/free-solid-svg-icons';
-
 import clsx from 'clsx';
 import Button from './Button';
 
@@ -132,7 +129,7 @@ const Upload = ({ party }: UploadProps) => {
                       <td className="py-2 w-full">{file.document.name}</td>
                       <td className="py-2">
                         <Button variant="icon" color="tertiary">
-                          <FontAwesomeIcon icon={faTrash} />
+                          delete
                         </Button>
                       </td>
                     </tr>
@@ -143,7 +140,6 @@ const Upload = ({ party }: UploadProps) => {
         </div>
 
         <Button color="tertiary" onClick={handleFileClick}>
-          <FontAwesomeIcon icon={faFileCirclePlus} />
           Add Document(s)
         </Button>
       </div>
