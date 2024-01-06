@@ -2,10 +2,10 @@ import { combineReducers, Reducer } from 'redux';
 
 import { RootState } from '../types';
 
-import filesReducer from './slices/files';
+import documentsReducer from './slices/documents';
 
 const rootReducer: Reducer<RootState> = combineReducers<RootState>({
-  files: filesReducer,
+  documents: documentsReducer,
 });
 
 export default rootReducer;

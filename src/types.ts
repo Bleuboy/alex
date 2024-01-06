@@ -11,6 +11,11 @@ export interface Testimony {
   text: string;
 }
 
+export interface CourtState {
+  previewFile: CourtFile | null;
+  courtFiles: CourtFile[];
+}
+
 export interface RootState {
-  files: CourtFile[];
+  documents: CourtState;
 }
