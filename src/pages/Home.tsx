@@ -2,31 +2,99 @@ import { Link } from 'react-router-dom';
 
 import Button from '../components/Button';
 
-// GridView which takes a list of strings and renders them in a flexible grid
+interface Item {
+  title: string;
+  description?: string;
+}
+
 type GridViewProps = {
-  items: string[];
+  items: Item[];
 };
 
 const GridView = ({ items }: GridViewProps) => {
+  const colsClass = `grid-cols-${items.length <= 4 ? 2 : 3}`;
+
   return (
-    <div className="grid grid-cols-3 gap-4">
-      {items.map((item) => (
-        <div className="bg-gray-200 p-4">{item}</div>
+    <div className={`grid ${colsClass} gap-8`}>
+      {items.map(({ title, description }) => (
+        <div className="bg-gray-200 p-4">
+          <h3 className="text-xl font-semibold text-center">{title}</h3>
+          <p className="text-center">{description}</p>
+        </div>
       ))}
     </div>
   );
 };
 
-const HeaderSection = () => {
+type InfoSectionProps = {
+  title: string;
+  description: string;
+  items: Item[];
+};
+
+const InfoSection = ({ title, description, items }: InfoSectionProps) => {
   return (
-    <div>
-      <h1 className="text-4xl font-bold text-center">
-        Welcome to ALex - Your AI Assistant
-      </h1>
-      <h2 className="text-3xl font-semibold text-center">
+    <div
+      id="features"
+      className="flex flex-col"
+      style={{
+        justifyContent: 'center',
+        minHeight: 'calc(100vh - 64px)',
+      }}
+    >
+      <h2 className="text-3xl font-semibold text-center">{title}</h2>
+      <p className="text-center">{description}</p>
+      <GridView items={items} />
+    </div>
+  );
+};
+
+const NavbarSection = () => {
+  return (
+    <div className="flex justify-between items-center">
+      <div className="flex items-center gap-4">
+        <img src="/alex-logo.png" className="w-12 h-12" />
+        {/* Add links to every section of this page, with automatic scrolling */}
+        <a href="#features" className="nav-link">
+          Features
+        </a>
+        <a href="#benefits" className="nav-link">
+          Benefits
+        </a>
+        <a href="#usps" className="nav-link">
+          USPs
+        </a>
+        <a href="#competitors" className="nav-link">
+          Competitors
+        </a>
+        <a href="#data-privacy" className="nav-link">
+          Data Privacy
+        </a>
+      </div>
+      <div>
+        <Link to="/upload">
+          <Button>Get Started</Button>
+        </Link>
+      </div>
+    </div>
+  );
+};
+
+const HeaderSection = () => {
+  // max-width: 600px;
+  return (
+    <div
+      className="flex flex-col gap-6"
+      style={{
+        justifyContent: 'center',
+        maxWidth: 600,
+        minHeight: 'calc(100vh - 80px)',
+      }}
+    >
+      <h1 className="text-6xl font-semibold">
         Empower Your Judgements with AI
-      </h2>
-      <p className="text-center">
+      </h1>
+      <p>
         Judges often struggle with chaotic structure, inflated text, and limited
         time per case. ALex is here to help increase the structure of your
         briefs and improve your understanding of the facts of the case.
@@ -38,86 +106,101 @@ const HeaderSection = () => {
   );
 };
 
-const FEATURES = [
-  'AI-Enhanced Factual Analysis: Consistent and Reliable Insights',
-  'Drag & Drop Application powered by AI: Enhanced Decision Accuracy',
-  'AI-Driven Evidence Check and Compilation: Seamless Workflow Integration',
-  'Improved Focus on Complex Cases: Automated Case Registration',
+const FEATURES: Item[] = [
+  {
+    title: 'AI-Enhanced Factual Analysis',
+    description:
+      'ALex provides you with a structured overview of the facts of the case. This allows you to focus on the most important aspects of the case and make better decisions.',
+  },
+  {
+    title: 'Drag & Drop Application powered by AI',
+    description: 'ALex is easy to use and provides you with reliable results.',
+  },
+  {
+    title: 'AI-Driven Evidence Check and Compilation',
+    description:
+      'ALex is designed to fit into your existing workflow. It can be used as a standalone application or integrated into your existing software.',
+  },
+  {
+    title: 'Automated Case Registration',
+    description: 'ALex can automatically register your cases.',
+  },
 ];
 
-const FeaturesSection = () => {
-  return (
-    <div>
-      <h2 className="text-3xl font-semibold text-center">Our Features</h2>
-      <GridView items={FEATURES} />
-    </div>
-  );
-};
-
-const BENEFITS = [
-  'Consistent and Reliable Insights',
-  'Enhanced Decision Accuracy',
-  'Seamless Workflow Integration',
-  'Improved Focus on Complex Cases',
+const BENEFITS: Item[] = [
+  { title: 'Consistent and Reliable Insights', description: '' },
+  { title: 'Enhanced Decision Accuracy', description: '' },
+  { title: 'Seamless Workflow Integration', description: '' },
+  { title: 'Improved Focus on Complex Cases', description: '' },
 ];
 
-const BenefitsSection = () => {
-  return (
-    <div>
-      <h2 className="text-3xl font-semibold text-center">Your Benefits</h2>
-      <GridView items={BENEFITS} />
-    </div>
-  );
-};
-
-const USPS = [
-  'Familiar interface that structures information according to judicial best practices',
-  'Judicially tailored LLM for nuanced brief analysis with transparent results',
-  'Encrypted data handling with privacy-centric-processing',
+const USPS: Item[] = [
+  {
+    title:
+      'Familiar interface that structures information according to judicial best practices',
+  },
+  {
+    title:
+      'Judicially tailored LLM for nuanced brief analysis with transparent results',
+  },
+  { title: 'Encrypted data handling with privacy-centric-processing' },
 ];
 
-const USPsSection = () => {
-  return (
-    <div>
-      <h2 className="text-3xl font-semibold text-center">
-        Our Unique Selling Propositions
-      </h2>
-      <GridView items={USPS} />
-    </div>
-  );
-};
-
-const COMPETITORS = [
-  'Input Modules Justiz by paradatec',
-  'Pen & Paper',
-  'Codefy',
-  'University Regensburg',
+const COMPETITORS: Item[] = [
+  { title: 'Input Modules Justiz by paradatec' },
+  { title: 'Pen & Paper' },
+  { title: 'Codefy' },
+  { title: 'University Regensburg' },
 ];
 
-const CompetitorsSection = () => {
-  return (
-    <div>
-      <h2 className="text-3xl font-semibold text-center">Competitors</h2>
-      <p className="text-center">
-        ALex outperforms the competition in terms of automation and
-        user-friendliness.
-      </p>
-      <GridView items={COMPETITORS} />
-    </div>
-  );
-};
+const DATA_PRIVACY: Item[] = [
+  {
+    title: 'Data Encryption',
+    description:
+      'We encrypt your data using the latest encryption standards. This ensures that your data is protected from unauthorized access.',
+  },
+  {
+    title: 'Data Integrity',
+    description:
+      'We ensure that your data is not altered in any way. This ensures that your data is not altered in any way.',
+  },
+  {
+    title: 'Data Availability',
+    description:
+      'We ensure that your data is available when you need it. This ensures that your data is available when you need it.',
+  },
+];
 
 const Home = () => {
   return (
-    <div className="w-full h-full flex-grow flex flex-col gap-4">
-      <header className="flex flex-row items-center">
-        <div></div>
-      </header>
+    <div className="container w-full h-full flex-grow flex flex-col gap-16">
+      <NavbarSection />
       <HeaderSection />
-      <FeaturesSection />
-      <BenefitsSection />
-      <USPsSection />
-      <CompetitorsSection />
+      <InfoSection
+        title="Tailor-made features"
+        description="Unleash the Power of ALex: Explore Our Cutting-Edge Features"
+        items={FEATURES}
+      />
+      <InfoSection title="Your Benefits" description="TODO" items={BENEFITS} />
+      <InfoSection
+        title="Our Unique Selling Propositions"
+        description="TODO"
+        items={USPS}
+      />
+      <InfoSection
+        title="Competitors"
+        description="ALex outperforms the competition in terms of automation and
+        user-friendliness."
+        items={COMPETITORS}
+      />
+      <InfoSection
+        title="Your Privacy Matters: Our Commitment to Data Security"
+        description="At Alex, safeguarding your data is our utmost priority. We are dedicated
+        to ensuring the confidentiality, integrity, and availability of your
+        information. Our commitment to data protection is unwavering, and we
+        adhere to stringent measures to maintain your privacy."
+        items={DATA_PRIVACY}
+      />
     </div>
   );
 };
