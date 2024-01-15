@@ -63,7 +63,7 @@ const AlexLink = ({ className, children, ...props }: AlexLinkProps) => {
 
 const NavbarSection = () => {
   return (
-    <div className="flex justify-between items-center">
+    <div className=" px-4 py-4 flex justify-between items-center sticky top-0 bg-white bg-opacity-80 backdrop-blur-md z-10">
       <div className="flex items-center gap-4">
         <img src="/alex-logo.png" className="w-12 h-12" />
         {/* Add links to every section of this page, with automatic scrolling */}
@@ -83,16 +83,8 @@ const NavbarSection = () => {
 };
 
 const HeaderSection = () => {
-  // max-width: 600px;
   return (
-    <div
-      className="flex flex-col gap-6"
-      style={{
-        justifyContent: 'center',
-        maxWidth: 600,
-        minHeight: 'calc(100vh - 80px)',
-      }}
-    >
+    <div className="flex flex-col justify-center min-h-screen">
       <h1 className="text-6xl font-semibold">
         Empower Your Judgements with AI
       </h1>
@@ -185,37 +177,39 @@ const CompetitorsSection = () => {
 
 const Home = () => {
   return (
-    <div className="container px-4 py-4 mx-auto max-w-7xl h-full flex flex-col gap-16">
+    <div className="mx-auto max-w-7xl">
       <NavbarSection />
-      <HeaderSection />
-      <InfoSection
-        id="features"
-        title="Tailor-made features"
-        description="Unleash the Power of ALex: Explore Our Cutting-Edge Features"
-        items={FEATURES}
-      />
-      <InfoSection
-        id="benefits"
-        title="Your Benefits"
-        description="TODO"
-        items={BENEFITS}
-      />
-      <InfoSection
-        id="usps"
-        title="Our Unique Selling Propositions"
-        description="TODO"
-        items={USPS}
-      />
-      <CompetitorsSection />
-      <InfoSection
-        id="data-privacy"
-        title="Your Privacy Matters: Our Commitment to Data Security"
-        description="At Alex, safeguarding your data is our utmost priority. We are dedicated
+      <div className="px-4 py-4 mx-auto flex flex-col gap-16">
+        <HeaderSection />
+        <InfoSection
+          id="features"
+          title="Tailor-made features"
+          description="Unleash the Power of ALex: Explore Our Cutting-Edge Features"
+          items={FEATURES}
+        />
+        <InfoSection
+          id="benefits"
+          title="Your Benefits"
+          description="TODO"
+          items={BENEFITS}
+        />
+        <InfoSection
+          id="usps"
+          title="Our Unique Selling Propositions"
+          description="TODO"
+          items={USPS}
+        />
+        <CompetitorsSection />
+        <InfoSection
+          id="data-privacy"
+          title="Your Privacy Matters: Our Commitment to Data Security"
+          description="At Alex, safeguarding your data is our utmost priority. We are dedicated
         to ensuring the confidentiality, integrity, and availability of your
         information. Our commitment to data protection is unwavering, and we
         adhere to stringent measures to maintain your privacy."
-        items={DATA_PRIVACY}
-      />
+          items={DATA_PRIVACY}
+        />
+      </div>
     </div>
   );
 };
