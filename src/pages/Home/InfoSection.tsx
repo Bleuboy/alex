@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import { Item } from './model';
 
 const ICON_NAMES = [
@@ -14,11 +16,15 @@ type GridViewProps = {
 };
 
 const GridView = ({ items }: GridViewProps) => {
-  const colsClass = `grid-cols-${items.length <= 4 ? 2 : 3}`;
+  const [showItems, setShowItems] = useState(2);
+
+  const handleShowMore = () => {
+    setShowItems((prevItems) => prevItems + 2);
+  };
 
   return (
-    <div className={`grid ${colsClass} gap-8`}>
-      {items.map(({ title, description }, index) => (
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+      {items.slice(0, showItems).map(({ title, description }, index) => (
         <div className="p-4 bg-white bg-opacity-70 backdrop-blur-md rounded">
           <img
             className="w-6 h-auto mx-auto pb-2"
@@ -29,10 +35,17 @@ const GridView = ({ items }: GridViewProps) => {
           <p className="description text-center">{description}</p>
         </div>
       ))}
+      {showItems < items.length && (
+        <button
+          onClick={handleShowMore}
+          className="mx-auto text-brand-secondary-default"
+        >
+          Show More
+        </button>
+      )}
     </div>
   );
 };
-
 type InfoSectionProps = {
   id: string;
   title: string;
