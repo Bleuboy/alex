@@ -34,16 +34,9 @@ type InfoSectionProps = {
 
 const InfoSection = ({ title, description, items }: InfoSectionProps) => {
   return (
-    <div
-      id="features"
-      className="flex flex-col"
-      style={{
-        justifyContent: 'center',
-        minHeight: 'calc(100vh - 64px)',
-      }}
-    >
-      <h2 className="text-3xl font-semibold text-center">{title}</h2>
-      <p className="text-center">{description}</p>
+    <div id="features" className="flex flex-col justify-center min-h-screen">
+      <h2 className="text-3xl font-semibold text-center pb-2">{title}</h2>
+      <p className="text-center pb-16">{description}</p>
       <GridView items={items} />
     </div>
   );
@@ -146,13 +139,6 @@ const USPS: Item[] = [
   { title: 'Encrypted data handling with privacy-centric-processing' },
 ];
 
-const COMPETITORS: Item[] = [
-  { title: 'Input Modules Justiz by paradatec' },
-  { title: 'Pen & Paper' },
-  { title: 'Codefy' },
-  { title: 'University Regensburg' },
-];
-
 const DATA_PRIVACY: Item[] = [
   {
     title: 'Data Encryption',
@@ -171,6 +157,23 @@ const DATA_PRIVACY: Item[] = [
   },
 ];
 
+const CompetitorsSection = () => {
+  return (
+    <div id="features" className="flex flex-col justify-center min-h-screen">
+      <h2 className="text-3xl font-semibold text-center pb-2">Competitors</h2>
+      <p className="text-center pb-16">
+        ALex outperforms the competition in terms of automation and
+        user-friendliness.
+      </p>
+      <img
+        className="w-full sm:w-1/2 mx-auto"
+        src="/competitors.png"
+        alt="Competitors"
+      />
+    </div>
+  );
+};
+
 const Home = () => {
   return (
     <div className="container w-full h-full flex-grow flex flex-col gap-16">
@@ -187,12 +190,7 @@ const Home = () => {
         description="TODO"
         items={USPS}
       />
-      <InfoSection
-        title="Competitors"
-        description="ALex outperforms the competition in terms of automation and
-        user-friendliness."
-        items={COMPETITORS}
-      />
+      <CompetitorsSection />
       <InfoSection
         title="Your Privacy Matters: Our Commitment to Data Security"
         description="At Alex, safeguarding your data is our utmost priority. We are dedicated
