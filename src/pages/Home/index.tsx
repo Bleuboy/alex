@@ -34,7 +34,7 @@ const UseCaseSection = () => {
       id="use-case"
       className="flex flex-col justify-center min-h-screen pt-24"
     >
-      <h2 className="text-3xl font-semibold text-center pb-2">
+      <h2 className="text-3xl font-semibold text-center pb-4">
         Empower Your Legal Insight: ALex - Transforming Chaos into Clarity
       </h2>
       <div className="flex flex-col sm:flex-row items-center gap-4">
@@ -60,7 +60,7 @@ const CompetitorsSection = () => {
       id="comparison"
       className="flex flex-col justify-center min-h-screen pt-24"
     >
-      <h2 className="text-3xl font-semibold text-center pb-2">
+      <h2 className="text-3xl font-semibold text-center pb-4">
         Unleashing Precision in Legal Analysis
       </h2>
       <p className="text-center pb-16">
@@ -85,20 +85,20 @@ const AboutUsSection = () => {
       <h2 className="text-3xl font-semibold text-center pb-8">
         About Us: The Future of Judicial Excellence
       </h2>
-      <div className="flex flex-col sm:flex-row justify-between">
-        <p className="description text-center pb-4 sm:w-1/3 sm:px-2">
+      <div className="flex flex-col md:flex-row justify-between pb-16 gap-4">
+        <p className="description text-center md:w-1/3 md:px-2">
           ALex is a revolutionary AI judge assistant designed by a passionate
           team of students from the Technical University Munich. Committed to
           innovation, our team brings together expertise in AI and legal
           technology to address the complex challenges faced by judges.
         </p>
-        <p className="description text-center pb-4 sm:w-1/3 sm:px-2">
+        <p className="description text-center md:w-1/3 md:px-2">
           Our mission is to empower judges with cutting-edge technology that
           enhances their decision-making processes. We envision a future where
           legal professionals can navigate complexities with ease, making the
           judicial system more efficient and accessible for everyone.
         </p>
-        <p className="description text-center pb-16 sm:w-1/3 sm:px-2">
+        <p className="description text-center md:w-1/3 md:px-2">
           With ALex, we've created a transformative tool that intelligently
           deciphers complex legal documents, ensuring clarity, efficiency, and a
           deeper understanding of every case within constrained timelines. Join

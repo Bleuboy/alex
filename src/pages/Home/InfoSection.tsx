@@ -36,7 +36,7 @@ export const InfoSection = ({
 }: InfoSectionProps) => {
   return (
     <div id={id} className="flex flex-col justify-center min-h-screen pt-24">
-      <h2 className="text-3xl font-semibold text-center pb-2">{title}</h2>
+      <h2 className="text-3xl font-semibold text-center pb-4">{title}</h2>
       <div className="flex flex-col sm:flex-row items-center gap-4 pb-16">
         <p className="description text-center">{description}</p>
         {imageSrc && (
