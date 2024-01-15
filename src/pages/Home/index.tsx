@@ -16,9 +16,14 @@ const HeaderSection = () => {
         time per case. ALex is here to help increase the structure of your
         briefs and improve your understanding of the facts of the case.
       </p>
-      <Link to="/upload">
-        <Button>Get Started</Button>
-      </Link>
+      <div className="flex gap-4">
+        <Link to="/upload">
+          <Button>Get Started</Button>
+        </Link>
+        <Link to="/demo-video" target="_blank">
+          <Button color="secondary">Watch Video</Button>
+        </Link>
+      </div>
     </div>
   );
 };
@@ -109,7 +114,7 @@ const AboutUsSection = () => {
   );
 };
 
-const Home = () => {
+export const Home = () => {
   return (
     <div className="mx-auto max-w-7xl">
       <NavigationBar />
@@ -143,5 +148,3 @@ const Home = () => {
     </div>
   );
 };
-
-export default Home;
