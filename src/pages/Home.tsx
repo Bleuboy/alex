@@ -82,6 +82,10 @@ const LINKS = [
     href: '#data-privacy',
     title: 'Data Privacy',
   },
+  {
+    href: '#about-us',
+    title: 'About Us',
+  },
 ];
 
 const NavigationBar = () => {
@@ -308,6 +312,36 @@ const CompetitorsSection = () => {
   );
 };
 
+const AboutUsSection = () => {
+  return (
+    <div id="about-us" className="flex flex-col justify-center min-h-screen">
+      <h2 className="text-3xl font-semibold text-center pb-8">
+        About Us: The Future of Judicial Excellence
+      </h2>
+      <div className="flex flex-col sm:flex-row justify-between">
+        <p className="description text-center pb-4 sm:w-1/3 sm:px-2">
+          ALex is a revolutionary AI judge assistant designed by a passionate
+          team of students from the Technical University Munich. Committed to
+          innovation, our team brings together expertise in AI and legal
+          technology to address the complex challenges faced by judges.
+        </p>
+        <p className="description text-center pb-4 sm:w-1/3 sm:px-2">
+          Our mission is to empower judges with cutting-edge technology that
+          enhances their decision-making processes. We envision a future where
+          legal professionals can navigate complexities with ease, making the
+          judicial system more efficient and accessible for everyone.
+        </p>
+        <p className="description text-center pb-16 sm:w-1/3 sm:px-2">
+          With ALex, we've created a transformative tool that intelligently
+          deciphers complex legal documents, ensuring clarity, efficiency, and a
+          deeper understanding of every case within constrained timelines. Join
+          us in shaping the future of judicial excellence with ALex.
+        </p>
+      </div>
+    </div>
+  );
+};
+
 const Home = () => {
   return (
     <div className="mx-auto max-w-7xl">
@@ -337,6 +371,7 @@ const Home = () => {
         adhere to stringent measures to maintain your privacy."
           items={DATA_PRIVACY}
         />
+        <AboutUsSection />
       </div>
     </div>
   );
