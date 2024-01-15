@@ -6,6 +6,8 @@ import { InfoSection } from './InfoSection';
 import { NavigationBar } from './NavigationBar';
 
 const HeaderSection = () => {
+  const test = 'test';
+
   return (
     <div className="flex flex-col justify-center min-h-screen gap-12 max-w-[600px]">
       <h1 className="text-6xl font-semibold">
