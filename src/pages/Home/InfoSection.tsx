@@ -31,7 +31,10 @@ const GridView = ({ items }: GridViewProps) => {
       {items
         .slice(0, showItems ? showItems : items.length)
         .map(({ title, description }, index) => (
-          <div className="p-4 bg-white bg-opacity-70 backdrop-blur-md rounded">
+          <div
+            key={title}
+            className="p-4 bg-white bg-opacity-70 backdrop-blur-md rounded"
+          >
             <img
               className="w-6 h-auto mx-auto pb-2"
               src={ICON_NAMES[index]}

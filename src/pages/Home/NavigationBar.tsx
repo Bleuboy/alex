@@ -93,7 +93,9 @@ export const NavigationBar = () => {
           </a>
           <div className="hidden md:flex gap-4">
             {LINKS.map(({ href, title }) => (
-              <AlexLink href={href}>{title}</AlexLink>
+              <AlexLink key={href} href={href}>
+                {title}
+              </AlexLink>
             ))}
           </div>
           <div className="md:hidden">
@@ -113,6 +115,7 @@ export const NavigationBar = () => {
                 >
                   {LINKS.map(({ href, title }) => (
                     <AlexLink
+                      key={href}
                       href={href}
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                       role="menuitem"
