@@ -37,23 +37,18 @@ const UseCaseSection = () => {
       <h2 className="text-3xl font-semibold text-center pb-2">
         Empower Your Legal Insight: ALex - Transforming Chaos into Clarity
       </h2>
-      <p className="description text-center pb-16">
-        Judges, grappling with the chaotic structure and inflated text of legal
-        briefs while under time constraints, encounter a critical need for
-        enhanced structure to understand the facts of each case thoroughly.
-        Enter ALex, our AI judge assistant—an innovative solution designed to
-        streamline the comprehension process. With ALex, judges experience a
-        transformative use case where complex legal documents are deciphered
-        intelligently, ensuring clarity, efficiency, and a deeper understanding
-        of every case within constrained timelines.
-      </p>
-      <div className="flex justify-around">
-        <img
-          className="w-1/4 sm:w-1/4 mx-4"
-          src="/assistant.png"
-          alt="Assistant"
-        />
-        <img className="w-1/4 sm:w-1/4 mx-4" src="/brief.png" alt="Brief" />
+      <div className="flex flex-col sm:flex-row items-center gap-4">
+        <p className="description text-center">
+          Judges, grappling with the chaotic structure and inflated text of
+          legal briefs while under time constraints, encounter a critical need
+          for enhanced structure to understand the facts of each case
+          thoroughly. Enter ALex, our AI judge assistant—an innovative solution
+          designed to streamline the comprehension process. With ALex, judges
+          experience a transformative use case where complex legal documents are
+          deciphered intelligently, ensuring clarity, efficiency, and a deeper
+          understanding of every case within constrained timelines.
+        </p>
+        <img className="w-1/2 sm:w-1/4" src="/brief.png" alt="Brief" />
       </div>
     </div>
   );
@@ -125,6 +120,7 @@ export const Home = () => {
           id="our-tool"
           title="Revolutionary Insights, Seamless Solutions"
           description="Empower your legal journey with ALex: Explore cutting-edge features tailored for revolutionary insights and seamless solutions. From AI-enhanced factual analysis to intuitive drag-and-drop functionality, ALex transforms legal complexities into clarity. Experience consistent insights, enhanced decision accuracy, seamless workflow integration, and improved focus on intricate cases. Join the legal revolution with ALex – the future of judicial excellence."
+          imageSrc="/assistant.png"
           items={FEATURES}
         />
         <InfoSection

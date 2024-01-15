@@ -23,6 +23,7 @@ type InfoSectionProps = {
   id: string;
   title: string;
   description: string;
+  imageSrc?: string;
   items: Item[];
 };
 
@@ -30,12 +31,18 @@ export const InfoSection = ({
   id,
   title,
   description,
+  imageSrc,
   items,
 }: InfoSectionProps) => {
   return (
     <div id={id} className="flex flex-col justify-center min-h-screen pt-24">
       <h2 className="text-3xl font-semibold text-center pb-2">{title}</h2>
-      <p className="description text-center pb-16">{description}</p>
+      <div className="flex flex-col sm:flex-row items-center gap-4 pb-16">
+        <p className="description text-center">{description}</p>
+        {imageSrc && (
+          <img className="w-1/2 sm:w-1/4" src={imageSrc} alt={imageSrc} />
+        )}
+      </div>
       <GridView items={items} />
     </div>
   );
