@@ -9,7 +9,7 @@ const HeaderSection = () => {
   return (
     <div className="flex flex-col justify-center min-h-screen gap-12 max-w-[600px]">
       <h1 className="text-6xl font-semibold">
-        Empower Your Judgements with AI
+        Empower Your Judgements with <span className="text-success">AI</span>
       </h1>
       <p className="description">
         Judges often struggle with chaotic structure, inflated text, and limited

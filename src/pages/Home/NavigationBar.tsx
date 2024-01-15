@@ -1,9 +1,6 @@
 import { AnchorHTMLAttributes, useEffect, useRef, useState } from 'react';
 
 import clsx from 'clsx';
-import { Link } from 'react-router-dom';
-
-import Button from '../../components/Button';
 
 const LINKS = [
   {
@@ -89,7 +86,7 @@ export const NavigationBar = () => {
       <div className="flex max-w-7xl w-full mx-auto justify-between items-center">
         <div className="flex items-center gap-4">
           <a href="#">
-            <img src="/alex-logo.png" className="w-12 h-12" />
+            <img src="/alex-logo.png" className="w-auto h-12" />
           </a>
           <div className="hidden md:flex gap-4">
             {LINKS.map(({ href, title }) => (
@@ -128,11 +125,9 @@ export const NavigationBar = () => {
             )}
           </div>
         </div>
-        {import.meta.env.VITE_APP_IS_INTERNAL === 'true' && (
-          <Link to="/upload">
-            <Button>Get Started</Button>
-          </Link>
-        )}
+        <a href="#">
+          <img src="/alex-name.png" className="w-auto h-12" />
+        </a>
       </div>
     </div>
   );
