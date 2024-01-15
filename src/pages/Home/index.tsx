@@ -23,7 +23,7 @@ const HeaderSection = () => {
           </Link>
         )}
         <Link to="/demo-video" target="_blank">
-          <Button color="secondary">Watch Video</Button>
+          <Button color="secondary">Watch Demo</Button>
         </Link>
       </div>
     </div>
