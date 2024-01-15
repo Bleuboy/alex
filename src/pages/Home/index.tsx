@@ -83,7 +83,10 @@ const CompetitorsSection = () => {
 
 const AboutUsSection = () => {
   return (
-    <div id="about-us" className="flex flex-col justify-center min-h-screen">
+    <div
+      id="about-us"
+      className="flex flex-col justify-center min-h-screen pt-24"
+    >
       <h2 className="text-3xl font-semibold text-center pb-8">
         About Us: The Future of Judicial Excellence
       </h2>
