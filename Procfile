@@ -1,1 +1,1 @@
-web: npx vite preview
+web: vite preview
