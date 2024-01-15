@@ -65,12 +65,14 @@ const NavbarSection = () => {
   return (
     <div className=" px-4 py-4 flex justify-between items-center sticky top-0 bg-white bg-opacity-80 backdrop-blur-md z-10">
       <div className="flex items-center gap-4">
-        <img src="/alex-logo.png" className="w-12 h-12" />
+        <a href="#">
+          <img src="/alex-logo.png" className="w-12 h-12" />
+        </a>
         {/* Add links to every section of this page, with automatic scrolling */}
-        <AlexLink href="#features">Features</AlexLink>
-        <AlexLink href="#benefits">Benefits</AlexLink>
-        <AlexLink href="#usps">USPs</AlexLink>
-        <AlexLink href="#competitors">Competitors</AlexLink>
+        <AlexLink href="#use-case">Use Case</AlexLink>
+        <AlexLink href="#our-tool">Our Tool</AlexLink>
+        <AlexLink href="#technology">Technology</AlexLink>
+        <AlexLink href="#comparison">Comparison</AlexLink>
         <AlexLink href="#data-privacy">Data Privacy</AlexLink>
       </div>
       <div>
@@ -84,7 +86,7 @@ const NavbarSection = () => {
 
 const HeaderSection = () => {
   return (
-    <div className="flex flex-col justify-center min-h-screen">
+    <div className="flex flex-col justify-center min-h-screen gap-12">
       <h1 className="text-6xl font-semibold">
         Empower Your Judgements with AI
       </h1>
@@ -128,16 +130,15 @@ const BENEFITS: Item[] = [
   { title: 'Improved Focus on Complex Cases', description: '' },
 ];
 
-const USPS: Item[] = [
-  {
-    title:
-      'Familiar interface that structures information according to judicial best practices',
-  },
+// create 4 points why our technology is the best for this use case
+const TECHNOLOGY: Item[] = [
   {
     title:
       'Judicially tailored LLM for nuanced brief analysis with transparent results',
   },
   { title: 'Encrypted data handling with privacy-centric-processing' },
+  { title: 'Automated case registration' },
+  { title: 'Drag and drop application powered by AI' },
 ];
 
 const DATA_PRIVACY: Item[] = [
@@ -158,10 +159,27 @@ const DATA_PRIVACY: Item[] = [
   },
 ];
 
+const UseCaseSection = () => {
+  return (
+    <div id="use-case" className="flex flex-col justify-center min-h-screen">
+      <h2 className="text-3xl font-semibold text-center pb-2">Use Case</h2>
+      <p className="text-center pb-16">
+        ALex is a tool that helps judges make better decisions. It is designed
+        to be easy to use and provides you with reliable results.
+      </p>
+      <img
+        className="w-full sm:w-1/2 mx-auto"
+        src="/use-case.png"
+        alt="Use Case"
+      />
+    </div>
+  );
+};
+
 const CompetitorsSection = () => {
   return (
-    <div id="competitors" className="flex flex-col justify-center min-h-screen">
-      <h2 className="text-3xl font-semibold text-center pb-2">Competitors</h2>
+    <div id="comparison" className="flex flex-col justify-center min-h-screen">
+      <h2 className="text-3xl font-semibold text-center pb-2">Comparison</h2>
       <p className="text-center pb-16">
         ALex outperforms the competition in terms of automation and
         user-friendliness.
@@ -181,8 +199,9 @@ const Home = () => {
       <NavbarSection />
       <div className="px-4 py-4 mx-auto flex flex-col gap-16">
         <HeaderSection />
+        <UseCaseSection />
         <InfoSection
-          id="features"
+          id="our-tool"
           title="Tailor-made features"
           description="Unleash the Power of ALex: Explore Our Cutting-Edge Features"
           items={FEATURES}
@@ -194,10 +213,10 @@ const Home = () => {
           items={BENEFITS}
         />
         <InfoSection
-          id="usps"
-          title="Our Unique Selling Propositions"
+          id="technology"
+          title="Our Technology"
           description="TODO"
-          items={USPS}
+          items={TECHNOLOGY}
         />
         <CompetitorsSection />
         <InfoSection
