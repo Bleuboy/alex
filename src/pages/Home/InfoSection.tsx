@@ -1,5 +1,14 @@
 import { Item } from './model';
 
+const ICON_NAMES = [
+  '/icons/brief-icon.png',
+  '/icons/col-icon.png',
+  '/icons/compare-icon.png',
+  '/icons/dashboard-icon.png',
+  '/icons/layer-icon.png',
+  '/icons/layer-icon-2.png',
+];
+
 type GridViewProps = {
   items: Item[];
 };
@@ -7,10 +16,17 @@ type GridViewProps = {
 const GridView = ({ items }: GridViewProps) => {
   const colsClass = `grid-cols-${items.length <= 4 ? 2 : 3}`;
 
+  console.log(ICON_NAMES);
+
   return (
     <div className={`grid ${colsClass} gap-8`}>
-      {items.map(({ title, description }) => (
+      {items.map(({ title, description }, index) => (
         <div className="p-4 bg-white bg-opacity-70 backdrop-blur-md rounded">
+          <img
+            className="w-6 h-auto mx-auto pb-2"
+            src={ICON_NAMES[index]}
+            alt={ICON_NAMES[index]}
+          />
           <h3 className="text-xl font-semibold text-center pb-2">{title}</h3>
           <p className="description text-center">{description}</p>
         </div>

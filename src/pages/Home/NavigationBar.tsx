@@ -19,12 +19,12 @@ const LINKS = [
     title: 'Technology',
   },
   {
-    href: '#comparison',
-    title: 'Comparison',
-  },
-  {
     href: '#data-privacy',
     title: 'Data Privacy',
+  },
+  {
+    href: '#comparison',
+    title: 'Comparison',
   },
   {
     href: '#about-us',
@@ -38,7 +38,7 @@ const AlexLink = ({ className, children, ...props }: AlexLinkProps) => {
   return (
     <a
       className={clsx(
-        'no-underline font-semibold transition duration-200 ease-in-out hover:underline',
+        'no-underline font-semibold transition duration-200 ease-in-out hover:underline whitespace-nowrap overflow-hidden max-w-full',
         className,
       )}
       {...props}

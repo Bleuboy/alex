@@ -129,16 +129,16 @@ export const Home = () => {
           description="Dive into the future of legal technology with ALex's cutting-edge features and a user interface that defines cool and clean. Our AI-driven tool not only simplifies the complex but redefines the user experience, making legal analysis intuitive and efficient. Explore the synergy of the coolest automations and a UI designed for clarity, ensuring that every interaction with ALex is a testament to the seamless power of AI innovation."
           items={TECHNOLOGY}
         />
-        <CompetitorsSection />
         <InfoSection
           id="data-privacy"
           title="Your Privacy Matters: Our Commitment to Data Security"
           description="At Alex, safeguarding your data is our utmost priority. We are dedicated
-        to ensuring the confidentiality, integrity, and availability of your
-        information. Our commitment to data protection is unwavering, and we
-        adhere to stringent measures to maintain your privacy."
+          to ensuring the confidentiality, integrity, and availability of your
+          information. Our commitment to data protection is unwavering, and we
+          adhere to stringent measures to maintain your privacy."
           items={DATA_PRIVACY}
         />
+        <CompetitorsSection />
         <AboutUsSection />
       </div>
     </div>
