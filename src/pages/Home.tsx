@@ -19,9 +19,9 @@ const GridView = ({ items }: GridViewProps) => {
   return (
     <div className={`grid ${colsClass} gap-8`}>
       {items.map(({ title, description }) => (
-        <div className="bg-gray-200 p-4">
-          <h3 className="text-xl font-semibold text-center">{title}</h3>
-          <p className="text-center">{description}</p>
+        <div className="p-4 bg-white bg-opacity-70 backdrop-blur-md rounded">
+          <h3 className="text-xl font-semibold text-center pb-2">{title}</h3>
+          <p className="description text-center">{description}</p>
         </div>
       ))}
     </div>
@@ -39,7 +39,7 @@ const InfoSection = ({ id, title, description, items }: InfoSectionProps) => {
   return (
     <div id={id} className="flex flex-col justify-center min-h-screen pt-24">
       <h2 className="text-3xl font-semibold text-center pb-2">{title}</h2>
-      <p className="text-center pb-16">{description}</p>
+      <p className="description text-center pb-16">{description}</p>
       <GridView items={items} />
     </div>
   );
@@ -171,11 +171,11 @@ const NavigationBar = () => {
 
 const HeaderSection = () => {
   return (
-    <div className="flex flex-col justify-center min-h-screen gap-12">
+    <div className="flex flex-col justify-center min-h-screen gap-12 max-w-[600px]">
       <h1 className="text-6xl font-semibold">
         Empower Your Judgements with AI
       </h1>
-      <p>
+      <p className="description">
         Judges often struggle with chaotic structure, inflated text, and limited
         time per case. ALex is here to help increase the structure of your
         briefs and improve your understanding of the facts of the case.
@@ -191,39 +191,47 @@ const FEATURES: Item[] = [
   {
     title: 'AI-Enhanced Factual Analysis',
     description:
-      'ALex provides you with a structured overview of the facts of the case. This allows you to focus on the most important aspects of the case and make better decisions.',
+      'Gain a structured overview of case facts with ALex, ensuring consistent and reliable insights, allowing you to focus on essential aspects for better decisions.',
   },
   {
     title: 'Drag & Drop Application powered by AI',
-    description: 'ALex is easy to use and provides you with reliable results.',
+    description:
+      'Experience ease of use and reliable results with ALex, enhancing decision accuracy and seamlessly integrating into your existing workflow for improved focus on complex cases.',
   },
   {
     title: 'AI-Driven Evidence Check and Compilation',
     description:
-      'ALex is designed to fit into your existing workflow. It can be used as a standalone application or integrated into your existing software.',
+      'Integrate ALex effortlessly into your workflow, benefitting from automated case registration, consistent insights, enhanced decision accuracy, and improved focus on complex cases.',
   },
   {
     title: 'Automated Case Registration',
-    description: 'ALex can automatically register your cases.',
+    description:
+      'Enjoy the convenience of automated case registration with ALex, streamlining your workflow and providing consistent, reliable insights for improved decision-making.',
   },
 ];
 
-const BENEFITS: Item[] = [
-  { title: 'Consistent and Reliable Insights', description: '' },
-  { title: 'Enhanced Decision Accuracy', description: '' },
-  { title: 'Seamless Workflow Integration', description: '' },
-  { title: 'Improved Focus on Complex Cases', description: '' },
-];
-
-// create 4 points why our technology is the best for this use case
 const TECHNOLOGY: Item[] = [
   {
     title:
       'Judicially tailored LLM for nuanced brief analysis with transparent results',
+    description:
+      'ALex incorporates a Judicially tailored Language Model (LLM) that refines legal brief analysis, ensuring nuanced understanding and providing transparent, insightful results.',
   },
-  { title: 'Encrypted data handling with privacy-centric-processing' },
-  { title: 'Automated case registration' },
-  { title: 'Drag and drop application powered by AI' },
+  {
+    title: 'Encrypted data handling with privacy-centric-processing',
+    description:
+      'Our technology prioritizes data security through encrypted handling, employing privacy-centric processing to safeguard sensitive legal information.',
+  },
+  {
+    title: 'Automated case registration',
+    description:
+      'Experience unparalleled efficiency with ALex’s automated case registration, streamlining the process and eliminating manual hassles for judges.',
+  },
+  {
+    title: 'Drag and drop application powered by AI',
+    description:
+      'ALex introduces a user-friendly drag-and-drop application, seamlessly powered by AI, to enhance user experience and simplify the navigation of legal documents.',
+  },
 ];
 
 const DATA_PRIVACY: Item[] = [
@@ -246,28 +254,50 @@ const DATA_PRIVACY: Item[] = [
 
 const UseCaseSection = () => {
   return (
-    <div id="use-case" className="flex flex-col justify-center min-h-screen">
-      <h2 className="text-3xl font-semibold text-center pb-2">Use Case</h2>
-      <p className="text-center pb-16">
-        ALex is a tool that helps judges make better decisions. It is designed
-        to be easy to use and provides you with reliable results.
+    <div
+      id="use-case"
+      className="flex flex-col justify-center min-h-screen pt-24"
+    >
+      <h2 className="text-3xl font-semibold text-center pb-2">
+        Empower Your Legal Insight: ALex - Transforming Chaos into Clarity
+      </h2>
+      <p className="description text-center pb-16">
+        Judges, grappling with the chaotic structure and inflated text of legal
+        briefs while under time constraints, encounter a critical need for
+        enhanced structure to understand the facts of each case thoroughly.
+        Enter ALex, our AI judge assistant—an innovative solution designed to
+        streamline the comprehension process. With ALex, judges experience a
+        transformative use case where complex legal documents are deciphered
+        intelligently, ensuring clarity, efficiency, and a deeper understanding
+        of every case within constrained timelines.
       </p>
-      <img
-        className="w-full sm:w-1/2 mx-auto"
-        src="/use-case.png"
-        alt="Use Case"
-      />
+      <div className="flex justify-around">
+        <img
+          className="w-1/4 sm:w-1/4 mx-4"
+          src="/assistant.png"
+          alt="Assistant"
+        />
+        <img className="w-1/4 sm:w-1/4 mx-4" src="/brief.png" alt="Brief" />
+      </div>
     </div>
   );
 };
 
 const CompetitorsSection = () => {
   return (
-    <div id="comparison" className="flex flex-col justify-center min-h-screen">
-      <h2 className="text-3xl font-semibold text-center pb-2">Comparison</h2>
+    <div
+      id="comparison"
+      className="flex flex-col justify-center min-h-screen pt-24"
+    >
+      <h2 className="text-3xl font-semibold text-center pb-2">
+        Unleashing Precision in Legal Analysis
+      </h2>
       <p className="text-center pb-16">
-        ALex outperforms the competition in terms of automation and
-        user-friendliness.
+        ALex, where the coolest automations meet unparalleled ease of use, all
+        powered by AI innovation. Elevate your legal insights effortlessly as
+        ALex transforms complex cases into clear, concise analyses. With ALex,
+        experience the pinnacle of legal assistance—effortless, powerful, and
+        undeniably cool.
       </p>
       <img
         className="w-full sm:w-1/2 mx-auto"
@@ -287,20 +317,14 @@ const Home = () => {
         <UseCaseSection />
         <InfoSection
           id="our-tool"
-          title="Tailor-made features"
-          description="Unleash the Power of ALex: Explore Our Cutting-Edge Features"
+          title="Revolutionary Insights, Seamless Solutions"
+          description="Empower your legal journey with ALex: Explore cutting-edge features tailored for revolutionary insights and seamless solutions. From AI-enhanced factual analysis to intuitive drag-and-drop functionality, ALex transforms legal complexities into clarity. Experience consistent insights, enhanced decision accuracy, seamless workflow integration, and improved focus on intricate cases. Join the legal revolution with ALex – the future of judicial excellence."
           items={FEATURES}
         />
         <InfoSection
-          id="benefits"
-          title="Your Benefits"
-          description="TODO"
-          items={BENEFITS}
-        />
-        <InfoSection
           id="technology"
-          title="Our Technology"
-          description="TODO"
+          title="AI at Your Fingertips: Seamless Power in Every Click"
+          description="Dive into the future of legal technology with ALex's cutting-edge features and a user interface that defines cool and clean. Our AI-driven tool not only simplifies the complex but redefines the user experience, making legal analysis intuitive and efficient. Explore the synergy of the coolest automations and a UI designed for clarity, ensuring that every interaction with ALex is a testament to the seamless power of AI innovation."
           items={TECHNOLOGY}
         />
         <CompetitorsSection />
