@@ -1,5 +1,6 @@
 import { AnchorHTMLAttributes, useEffect, useRef, useState } from 'react';
 
+import clsx from 'clsx';
 import { Link } from 'react-router-dom';
 
 import Button from '../../components/Button';
@@ -36,10 +37,10 @@ type AlexLinkProps = AnchorHTMLAttributes<HTMLAnchorElement>;
 const AlexLink = ({ className, children, ...props }: AlexLinkProps) => {
   return (
     <a
-      className={
-        'no-underline font-semibold transition duration-200 ease-in-out hover:underline' +
-        (className ? ' ' + className : '')
-      }
+      className={clsx(
+        'no-underline font-semibold transition duration-200 ease-in-out hover:underline',
+        className,
+      )}
       {...props}
     >
       {children}
