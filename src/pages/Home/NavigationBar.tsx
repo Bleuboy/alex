@@ -83,48 +83,48 @@ export const NavigationBar = () => {
 
   return (
     <div
-      className="px-4 py-4 flex justify-between items-center sticky top-0 bg-white bg-opacity-80 backdrop-blur-md z-10"
+      className="p-4 flex sticky top-0 bg-white bg-opacity-80 backdrop-blur-md z-10"
       ref={node}
     >
-      <div className="flex items-center gap-4">
-        <a href="#">
-          <img src="/alex-logo.png" className="w-12 h-12" />
-        </a>
-        <div className="hidden md:flex gap-4">
-          {LINKS.map(({ href, title }) => (
-            <AlexLink href={href}>{title}</AlexLink>
-          ))}
-        </div>
-        <div className="md:hidden">
-          <button
-            className="font-semibold"
-            onClick={() => setIsOpen((state) => !state)}
-          >
-            Menu
-          </button>
-          {isOpen && (
-            <div className="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
-              <div
-                className="py-1"
-                role="menu"
-                aria-orientation="vertical"
-                aria-labelledby="options-menu"
-              >
-                {LINKS.map(({ href, title }) => (
-                  <AlexLink
-                    href={href}
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                    role="menuitem"
-                  >
-                    {title}
-                  </AlexLink>
-                ))}
+      <div className="flex max-w-7xl w-full mx-auto justify-between items-center">
+        <div className="flex items-center gap-4">
+          <a href="#">
+            <img src="/alex-logo.png" className="w-12 h-12" />
+          </a>
+          <div className="hidden md:flex gap-4">
+            {LINKS.map(({ href, title }) => (
+              <AlexLink href={href}>{title}</AlexLink>
+            ))}
+          </div>
+          <div className="md:hidden">
+            <button
+              className="font-semibold"
+              onClick={() => setIsOpen((state) => !state)}
+            >
+              Menu
+            </button>
+            {isOpen && (
+              <div className="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+                <div
+                  className="py-1"
+                  role="menu"
+                  aria-orientation="vertical"
+                  aria-labelledby="options-menu"
+                >
+                  {LINKS.map(({ href, title }) => (
+                    <AlexLink
+                      href={href}
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      role="menuitem"
+                    >
+                      {title}
+                    </AlexLink>
+                  ))}
+                </div>
               </div>
-            </div>
-          )}
+            )}
+          </div>
         </div>
-      </div>
-      <div>
         <Link to="/upload">
           <Button>Get Started</Button>
         </Link>

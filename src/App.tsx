@@ -13,7 +13,7 @@ const App = () => {
   return (
     <div className="relative w-full h-screen">
       <AbsoluteBackground />
-      <main className="w-full flex flex-col justify-center items-center">
+      <main className="w-full flex flex-col">
         <Routes>
           <Route path="" element={<Home />}></Route>
           <Route path="/upload" element={<AddDocumentPage />}></Route>

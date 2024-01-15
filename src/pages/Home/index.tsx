@@ -111,9 +111,9 @@ const AboutUsSection = () => {
 
 export const Home = () => {
   return (
-    <div className="mx-auto max-w-7xl">
+    <div>
       <NavigationBar />
-      <div className="px-4 py-4 mx-auto flex flex-col gap-16">
+      <div className="px-4 py-4 mx-auto max-w-7xl flex flex-col gap-16">
         <HeaderSection />
         <UseCaseSection />
         <InfoSection
