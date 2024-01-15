@@ -125,9 +125,11 @@ export const NavigationBar = () => {
             )}
           </div>
         </div>
-        <Link to="/upload">
-          <Button>Get Started</Button>
-        </Link>
+        {import.meta.env.VITE_APP_IS_INTERNAL === 'true' && (
+          <Link to="/upload">
+            <Button>Get Started</Button>
+          </Link>
+        )}
       </div>
     </div>
   );

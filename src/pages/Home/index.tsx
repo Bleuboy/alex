@@ -17,9 +17,11 @@ const HeaderSection = () => {
         briefs and improve your understanding of the facts of the case.
       </p>
       <div className="flex gap-4">
-        <Link to="/upload">
-          <Button>Get Started</Button>
-        </Link>
+        {import.meta.env.VITE_APP_IS_INTERNAL === 'true' && (
+          <Link to="/upload">
+            <Button>Get Started</Button>
+          </Link>
+        )}
         <Link to="/demo-video" target="_blank">
           <Button color="secondary">Watch Video</Button>
         </Link>
