@@ -1,3 +1,5 @@
+import { AnchorHTMLAttributes } from 'react';
+
 import { Link } from 'react-router-dom';
 
 import Button from '../components/Button';
@@ -27,18 +29,35 @@ const GridView = ({ items }: GridViewProps) => {
 };
 
 type InfoSectionProps = {
+  id: string;
   title: string;
   description: string;
   items: Item[];
 };
 
-const InfoSection = ({ title, description, items }: InfoSectionProps) => {
+const InfoSection = ({ id, title, description, items }: InfoSectionProps) => {
   return (
-    <div id="features" className="flex flex-col justify-center min-h-screen">
+    <div id={id} className="flex flex-col justify-center min-h-screen">
       <h2 className="text-3xl font-semibold text-center pb-2">{title}</h2>
       <p className="text-center pb-16">{description}</p>
       <GridView items={items} />
     </div>
+  );
+};
+
+type AlexLinkProps = AnchorHTMLAttributes<HTMLAnchorElement>;
+
+const AlexLink = ({ className, children, ...props }: AlexLinkProps) => {
+  return (
+    <a
+      className={
+        'no-underline font-semibold transition duration-200 ease-in-out hover:underline' +
+        (className ? ' ' + className : '')
+      }
+      {...props}
+    >
+      {children}
+    </a>
   );
 };
 
@@ -48,21 +67,11 @@ const NavbarSection = () => {
       <div className="flex items-center gap-4">
         <img src="/alex-logo.png" className="w-12 h-12" />
         {/* Add links to every section of this page, with automatic scrolling */}
-        <a href="#features" className="nav-link">
-          Features
-        </a>
-        <a href="#benefits" className="nav-link">
-          Benefits
-        </a>
-        <a href="#usps" className="nav-link">
-          USPs
-        </a>
-        <a href="#competitors" className="nav-link">
-          Competitors
-        </a>
-        <a href="#data-privacy" className="nav-link">
-          Data Privacy
-        </a>
+        <AlexLink href="#features">Features</AlexLink>
+        <AlexLink href="#benefits">Benefits</AlexLink>
+        <AlexLink href="#usps">USPs</AlexLink>
+        <AlexLink href="#competitors">Competitors</AlexLink>
+        <AlexLink href="#data-privacy">Data Privacy</AlexLink>
       </div>
       <div>
         <Link to="/upload">
@@ -159,7 +168,7 @@ const DATA_PRIVACY: Item[] = [
 
 const CompetitorsSection = () => {
   return (
-    <div id="features" className="flex flex-col justify-center min-h-screen">
+    <div id="competitors" className="flex flex-col justify-center min-h-screen">
       <h2 className="text-3xl font-semibold text-center pb-2">Competitors</h2>
       <p className="text-center pb-16">
         ALex outperforms the competition in terms of automation and
@@ -176,22 +185,30 @@ const CompetitorsSection = () => {
 
 const Home = () => {
   return (
-    <div className="container w-full h-full flex-grow flex flex-col gap-16">
+    <div className="container px-4 py-4 mx-auto max-w-7xl h-full flex flex-col gap-16">
       <NavbarSection />
       <HeaderSection />
       <InfoSection
+        id="features"
         title="Tailor-made features"
         description="Unleash the Power of ALex: Explore Our Cutting-Edge Features"
         items={FEATURES}
       />
-      <InfoSection title="Your Benefits" description="TODO" items={BENEFITS} />
       <InfoSection
+        id="benefits"
+        title="Your Benefits"
+        description="TODO"
+        items={BENEFITS}
+      />
+      <InfoSection
+        id="usps"
         title="Our Unique Selling Propositions"
         description="TODO"
         items={USPS}
       />
       <CompetitorsSection />
       <InfoSection
+        id="data-privacy"
         title="Your Privacy Matters: Our Commitment to Data Security"
         description="At Alex, safeguarding your data is our utmost priority. We are dedicated
         to ensuring the confidentiality, integrity, and availability of your

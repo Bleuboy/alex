@@ -18,17 +18,3 @@ main {
   background-repeat: no-repeat;
   z-index: -1;
 }
-
-.container {
-  padding: 1rem 1rem;
-  max-width: 1200px;
-}
-
-.nav-link {
-  text-decoration: none;
-  font-weight: 600;
-}
-
-.nav-link:hover {
-  text-decoration: underline;
-}
