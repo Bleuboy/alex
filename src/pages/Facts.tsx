@@ -2,7 +2,7 @@ import CrossExam from '../components/CrossExam';
 
 const Facts = () => {
   return (
-    <div className="w-full h-full flex-grow flex flex-col gap-4">
+    <div className="w-full h-full flex-grow flex flex-col gap-4 min-h-screen">
       <header className="flex flex-row items-center">
         <div></div>
       </header>
