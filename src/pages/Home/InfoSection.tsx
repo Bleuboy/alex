@@ -23,7 +23,7 @@ const GridView = ({ items }: GridViewProps) => {
   const [showItems, setShowItems] = useState(isNarrowScreen ? 2 : null);
 
   const handleShowMore = () => {
-    setShowItems((prevItems) => prevItems + 2);
+    setShowItems((prevItems) => (prevItems ?? 0) + 2);
   };
 
   return (
