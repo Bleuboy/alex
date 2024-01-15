@@ -16,8 +16,6 @@ type GridViewProps = {
 const GridView = ({ items }: GridViewProps) => {
   const colsClass = `grid-cols-${items.length <= 4 ? 2 : 3}`;
 
-  console.log(ICON_NAMES);
-
   return (
     <div className={`grid ${colsClass} gap-8`}>
       {items.map(({ title, description }, index) => (
