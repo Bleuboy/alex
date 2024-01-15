@@ -13,7 +13,7 @@ import { RootState } from '../types';
 const AddDocumentPage = () => {
   const navigate = useNavigate();
 
-  const files = useSelector((state: RootState) => state.files);
+  const documents = useSelector((state: RootState) => state.documents);
 
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -46,7 +46,10 @@ const AddDocumentPage = () => {
         </div>
 
         <div className="w-full flex justify-center">
-          <Button disabled={!files.length} onClick={handleAnalyze}>
+          <Button
+            disabled={!documents.courtFiles.length}
+            onClick={handleAnalyze}
+          >
             Analyze
           </Button>
         </div>

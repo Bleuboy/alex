@@ -1,5 +1,9 @@
 export type Party = 'Claimant' | 'Defendant';
-export type Aspect = 'Factual' | 'Legal';
+
+export type AspectType = 'Factual' | 'Legal';
+export type TestimonyType = 'Disputed' | 'Undisputed';
+
+export type Filter = 'aspect' | 'testimony';
 
 export interface CourtFile {
   party: Party;
@@ -7,10 +11,24 @@ export interface CourtFile {
 }
 
 export interface Testimony {
-  aspect: Aspect;
+  party: Party;
+  type: TestimonyType;
+  
   text: string;
 }
 
+export interface Aspect {
+  party: Party;
+  type: AspectType;
+
+  text: string;
+}
+
+export interface CourtState {
+  previewFile: CourtFile | null;
+  courtFiles: CourtFile[];
+}
+
 export interface RootState {
-  files: CourtFile[];
+  documents: CourtState;
 }

@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { Aspect, Testimony } from '../types';
 
-const TestimonyBlock = ({ type, text }: Testimony | Aspect) => {
+const AspectBlock = ({ type, text }: Testimony | Aspect) => {
   return (
     <div className={clsx('flex flex-col rounded-lg bg-divider')}>
       <header
@@ -18,4 +18,4 @@ const TestimonyBlock = ({ type, text }: Testimony | Aspect) => {
   );
 };
 
-export default TestimonyBlock;
+export default AspectBlock;

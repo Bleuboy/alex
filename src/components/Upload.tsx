@@ -5,14 +5,14 @@ import clsx from 'clsx';
 import Button from './Button';
 
 import { CourtFile, Party, RootState } from '../types';
-import { setFiles } from '../redux/slices/files';
+import { setCourtFiles } from '../redux/slices/documents';
 
 interface UploadProps {
   party: Party;
 }
 
 const Upload = ({ party }: UploadProps) => {
-  const files = useSelector((state: RootState) => state.files);
+  const documents = useSelector((state: RootState) => state.documents);
   const dispatch = useDispatch();
 
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -29,25 +29,12 @@ const Upload = ({ party }: UploadProps) => {
     setDragOver(false);
   }, []);
 
-  const handleDrop = useCallback((e: React.DragEvent<HTMLDivElement>) => {
-    e.preventDefault();
-    setDragOver(false);
+  const handleDrop = useCallback(
+    (e: React.DragEvent<HTMLDivElement>) => {
+      e.preventDefault();
+      setDragOver(false);
 
-    const uploadedFiles: CourtFile[] = Array.from(e.dataTransfer.files)
-      .filter((file) => file.type === 'application/pdf')
-      .map((file: File) => ({
-        party,
-        document: file,
-      }));
-
-    if (uploadedFiles.length > 0) {
-      dispatch(setFiles([...files, ...uploadedFiles]));
-    }
-  }, [files]);
-
-  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files) {
-      const uploadedFiles: CourtFile[] = Array.from(e.target.files)
+      const uploadedFiles: CourtFile[] = Array.from(e.dataTransfer.files)
         .filter((file) => file.type === 'application/pdf')
         .map((file: File) => ({
           party,
@@ -55,10 +42,29 @@ const Upload = ({ party }: UploadProps) => {
         }));
 
       if (uploadedFiles.length > 0) {
-        dispatch(setFiles([...files, ...uploadedFiles]));
+        dispatch(setCourtFiles([...documents.courtFiles, ...uploadedFiles]));
       }
-    }
-  }, [files]);
+    },
+    [documents.courtFiles],
+  );
+
+  const handleChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      if (e.target.files) {
+        const uploadedFiles: CourtFile[] = Array.from(e.target.files)
+          .filter((file) => file.type === 'application/pdf')
+          .map((file: File) => ({
+            party,
+            document: file,
+          }));
+
+        if (uploadedFiles.length > 0) {
+          dispatch(setCourtFiles([...documents.courtFiles, ...uploadedFiles]));
+        }
+      }
+    },
+    [documents.courtFiles],
+  );
 
   const handleFileClick = () => {
     fileInputRef.current?.click();
@@ -115,7 +121,7 @@ const Upload = ({ party }: UploadProps) => {
             </thead>*/}
 
             <tbody className="divide-y-2 border-divider">
-              {files
+              {documents.courtFiles
                 .filter((file) => file.party === party)
                 .map((file, i) => {
                   return (

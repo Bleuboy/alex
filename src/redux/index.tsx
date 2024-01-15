@@ -1,11 +1,11 @@
 import { combineReducers, Reducer } from 'redux';
 
-import { CourtFile, RootState } from '../types';
-import filesReducer from './slices/files';
+import { CourtState, RootState } from '../types';
+import documentsReducer from './slices/documents';
 
 // TODO - investigate this type casting
 const rootReducer: Reducer<RootState> = combineReducers<RootState>({
-  files: filesReducer as unknown as CourtFile[],
+  documents: documentsReducer as unknown as CourtState,
 });
 
 export default rootReducer;
