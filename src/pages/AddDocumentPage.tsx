@@ -1,23 +1,20 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-
-import { useSelector } from 'react-redux';
 
 import clsx from 'clsx';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
-import Upload from '../components/Upload';
-
-import Card from '../components/Card';
 import Button from '../components/Button';
+import Card from '../components/Card';
 import CircleLoader from '../components/CircleLoader';
-
+import Upload from '../components/Upload';
 import { RootState } from '../types';
 
 const AddDocumentPage = () => {
   const navigate = useNavigate();
 
   const documents = useSelector((state: RootState) => state.documents);
-  
+
   const [loading, setLoading] = useState<boolean>(false);
 
   const [progress, setProgress] = useState<number>(0);
@@ -26,8 +23,8 @@ const AddDocumentPage = () => {
     setLoading(true);
     setProgress(0);
 
-    let progressInterval = setInterval(() => {
-      setProgress((progress) => progress += 1);
+    const progressInterval = setInterval(() => {
+      setProgress((progress) => (progress += 1));
     }, 100);
 
     setTimeout(() => {
@@ -39,6 +36,7 @@ const AddDocumentPage = () => {
   };
 
   return (
+    <div className="flex justify-center items-center min-h-screen">
       <Card className="relative flex flex-col">
         <h1 className="text-2xl font-semibold">Add Document</h1>
 
@@ -48,7 +46,10 @@ const AddDocumentPage = () => {
         </div>
 
         <div className="w-full flex justify-center">
-          <Button disabled={!documents.courtFiles.length} onClick={handleAnalyze}>
+          <Button
+            disabled={!documents.courtFiles.length}
+            onClick={handleAnalyze}
+          >
             Analyze
           </Button>
         </div>
@@ -69,7 +70,8 @@ const AddDocumentPage = () => {
           <div>We're analyzing your documents.</div>
         </div>
       </Card>
+    </div>
   );
-}
+};
 
 export default AddDocumentPage;
