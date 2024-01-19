@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getDocument } from 'pdfjs-dist';
+import pdfParse from 'pdf-parse';
 import {
   CourtFile,
   RootState,
@@ -19,32 +19,27 @@ const Facts = () => {
 
   const courtFiles = documents.courtFiles;
 
-
-// Trying to get the text from the PDFs
-
   useEffect(() => {
-    const convertPDFToText = async (file: File) => {
-      const pdf = await getDocument({ url: URL.createObjectURL(file) }).promise;
-      let text = '';
-    
-      for (let i = 1; i <= pdf.numPages; i++) {
-        const page = await pdf.getPage(i);
-        const content = await page.getTextContent();
-        text += content.items
-          .filter((item): item is TextItem => 'str' in item)
-          .map(item => item.str)
-          .join(' ');
-      }
-    
-      console.log(text);
+    const convertPDFToText = (file: File) => {
+      const reader = new FileReader();
+      reader.onloadend = async () => {
+        const arrayBuffer = reader.result as ArrayBuffer;
+        const data = await pdfParse(Buffer.from(arrayBuffer));
+        console.log(data.text);
+      };
+      reader.readAsArrayBuffer(file);
     };
-  
+    
     courtFiles.forEach((courtFile) => {
       if (courtFile.document) {
         convertPDFToText(courtFile.document);
       }
     });
   }, [courtFiles]);
+
+
+
+
   const testimonies: Testimony[] = [
     {
       party: 'Claimant',
