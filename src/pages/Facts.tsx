@@ -29,22 +29,27 @@ const Facts = () => {
     {
       party: 'Claimant',
       type: 'Factual',
-      text: 'Claimant argues that medical expenses should be attributed to the defendant.',
+      text: "Der Vorfall ereignete sich am 21.09.2023",
+    },
+    {
+      party: 'Claimant',
+      type: 'Factual',
+      text: 'Die Handlungen des Angeklagten haben zu materiellen und nicht-materiellen Schäden geführt.',
     },
     {
       party: 'Claimant',
       type: 'Legal',
-      text: 'On the day of the accident, the weather conditions were foggy, with limited visibility.',
+      text: 'Es bestehe kein Zweifel daran, dass die vorliegenden Beweise die Forderungen stützen.',
     },
     {
       party: 'Defendant',
       type: 'Factual',
-      text: "Defendant argues that claimant's injury existed before the accident and were not a direct result.",
+      text: "Der Angeklagte bestreitet die gegen ihn erhobenen Vorwürfe. Die Handlung war nicht vorsätzlich.",
     },
     {
       party: 'Defendant',
       type: 'Legal',
-      text: ' On the day of the accident, the weather conditions were foggy, with limited visibility.',
+      text: ' Es gibt Faktoren und Umstände, die nicht angemessen berücksichtigt wurden und die eine Unschuld belegen können',
     },
   ];
 
