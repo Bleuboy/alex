@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 
+import { setPreviewFile } from '../redux/slices/documents';
 import {
   Aspect,
   CourtFile,
@@ -8,13 +9,10 @@ import {
   RootState,
   Testimony,
 } from '../types';
-
-import { setPreviewFile } from '../redux/slices/documents';
-
-import Button from './Button';
-import TestimonyBlock from './Testimony';
 import AspectBlock from './Aspect';
+import Button from './Button';
 import PDF from './PDF';
+import TestimonyBlock from './Testimony';
 
 interface CrossExamProps {
   party: Party;

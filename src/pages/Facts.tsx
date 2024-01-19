@@ -1,8 +1,8 @@
-import { Aspect, Filter, Testimony } from '../types';
-
-import CrossExam from '../components/CrossExam';
 import { useState } from 'react';
+
 import Button from '../components/Button';
+import CrossExam from '../components/CrossExam';
+import { Aspect, Filter, Testimony } from '../types';
 
 const Facts = () => {
   const [filter, setFilter] = useState<Filter>('aspect');
@@ -58,7 +58,7 @@ const Facts = () => {
   };
 
   return (
-    <div className="w-full h-full flex-grow flex flex-col gap-4">
+    <div className="w-full h-full flex-grow flex flex-col gap-4 min-h-screen">
       <header className="flex flex-row items-center p-4 bg-gray-500">
         <Button onClick={handleToggleFilter}>
           {filter === 'aspect' ? 'Show (U)Disp. Facts' : 'Show Legal/Factual'}
