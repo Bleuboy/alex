@@ -1,9 +1,13 @@
+import { useState } from 'react';
+
 import { Link } from 'react-router-dom';
 
 import Button from '../../components/Button';
 import { InfoSection } from './InfoSection';
 import { JUDGES_DATA } from './JUDGES_DATA';
+import { LandingPageData } from './model';
 import { NavigationBar } from './NavigationBar';
+import { NON_JUDGES_DATA } from './NON_JUDGES_DATA';
 
 const HeaderSection = () => {
   return (
@@ -30,8 +34,12 @@ const HeaderSection = () => {
   );
 };
 
-const CompetitorsSection = () => {
-  const content = JUDGES_DATA.competitors;
+type CompetitorsSectionProps = {
+  data: LandingPageData;
+};
+
+const CompetitorsSection = ({ data }: CompetitorsSectionProps) => {
+  const content = data.competitors;
 
   return (
     <div
@@ -51,8 +59,12 @@ const CompetitorsSection = () => {
   );
 };
 
-const AboutUsSection = () => {
-  const content = JUDGES_DATA.aboutUs;
+type AboutUsSectionProps = {
+  data: LandingPageData;
+};
+
+const AboutUsSection = ({ data }: AboutUsSectionProps) => {
+  const content = data.aboutUs;
 
   return (
     <div
@@ -74,17 +86,24 @@ const AboutUsSection = () => {
 };
 
 export const Home = () => {
+  const [isJudge, setIsJudge] = useState(true);
+  const data = isJudge ? JUDGES_DATA : NON_JUDGES_DATA;
+
+  const toggleIsJudge = () => {
+    setIsJudge((state) => !state);
+  };
+
   return (
     <div>
-      <NavigationBar />
+      <NavigationBar isJudge={isJudge} onIsJudgeClick={toggleIsJudge} />
       <div className="px-4 py-4 mx-auto max-w-7xl flex flex-col gap-16">
         <HeaderSection />
-        <InfoSection {...JUDGES_DATA.useCase} />
-        <InfoSection {...JUDGES_DATA.ourTool} />
-        <InfoSection {...JUDGES_DATA.technology} />
-        <InfoSection {...JUDGES_DATA.dataPrivacy} />
-        <CompetitorsSection />
-        <AboutUsSection />
+        <InfoSection {...data.useCase} />
+        <InfoSection {...data.ourTool} />
+        <InfoSection {...data.technology} />
+        <InfoSection {...data.dataPrivacy} />
+        <CompetitorsSection data={data} />
+        <AboutUsSection data={data} />
       </div>
     </div>
   );
