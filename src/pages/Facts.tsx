@@ -29,6 +29,8 @@ const Facts = () => {
 //After successfuly extracting the text from the PDFs
 // We should make several api calls each containing a different prompt (easiet way to get it up and running)
 // assign each response to the different testimonies available below
+
+
 useEffect(() => {
   const extractTextAndProcess = async (PDFDocument) => {
     if (PDFDocument) {
@@ -47,8 +49,8 @@ useEffect(() => {
     }
   };
 
-  extractTextAndProcess(documents.courtFiles[0]);
-}, [documents.courtFiles]);
+  extractTextAndProcess(PDF1);
+}, );
 
   const extractTextFromPdf1 = async (PDF1) => {
     try {
