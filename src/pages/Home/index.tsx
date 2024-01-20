@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 
 import Button from '../../components/Button';
-import { JUDGES_DATA } from './informationData';
 import { InfoSection } from './InfoSection';
+import { JUDGES_DATA } from './JUDGES_DATA';
 import { NavigationBar } from './NavigationBar';
 
 const HeaderSection = () => {

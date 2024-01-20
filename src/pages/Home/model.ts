@@ -20,3 +20,12 @@ export interface AboutUsData extends BasicData {
 export interface InfoSectionData extends SectionData {
   items: Item[];
 }
+
+export interface LandingPageData {
+  useCase: InfoSectionData;
+  competitors: SectionData;
+  ourTool: InfoSectionData;
+  technology: InfoSectionData;
+  dataPrivacy: InfoSectionData;
+  aboutUs: AboutUsData;
+}

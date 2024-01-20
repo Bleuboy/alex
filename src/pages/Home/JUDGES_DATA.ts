@@ -1,4 +1,4 @@
-import { AboutUsData, InfoSectionData, Item, SectionData } from './model';
+import { Item, LandingPageData } from './model';
 
 const USE_CASES: Item[] = [
   {
@@ -71,15 +71,6 @@ export const DATA_PRIVACY: Item[] = [
       'We ensure that your data is available when you need it. This ensures that your data is available when you need it.',
   },
 ];
-
-interface LandingPageData {
-  useCase: InfoSectionData;
-  competitors: SectionData;
-  ourTool: InfoSectionData;
-  technology: InfoSectionData;
-  dataPrivacy: InfoSectionData;
-  aboutUs: AboutUsData;
-}
 
 export const JUDGES_DATA: LandingPageData = {
   useCase: {
