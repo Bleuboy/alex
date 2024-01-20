@@ -1,5 +1,18 @@
 import { AboutUsData, InfoSectionData, Item, SectionData } from './model';
 
+const USE_CASES: Item[] = [
+  {
+    title: 'Chaotic structure',
+    description:
+      'Briefs often do not follow judicial best-practices and mix legal and factual argumentation throughout the document',
+  },
+  {
+    title: 'Inflated briefs',
+    description:
+      'Briefs are often inflated with references that are irrelevant to the case and hinder an efficient analysis of arguments.',
+  },
+];
+
 export const FEATURES: Item[] = [
   {
     title: 'AI-Enhanced Factual Analysis',
@@ -60,7 +73,7 @@ export const DATA_PRIVACY: Item[] = [
 ];
 
 interface LandingPageData {
-  useCase: SectionData;
+  useCase: InfoSectionData;
   competitors: SectionData;
   ourTool: InfoSectionData;
   technology: InfoSectionData;
@@ -71,10 +84,11 @@ interface LandingPageData {
 export const JUDGES_DATA: LandingPageData = {
   useCase: {
     id: 'use-case',
-    title: 'Use Case',
+    title: 'What is wrong with current briefs?',
     description:
-      'Judges, grappling with the chaotic structure and inflated text of legal briefs while under time constraints, encounter a critical need for enhanced structure to understand the facts of each case thoroughly. Enter ALex, our AI judge assistant—an innovative solution designed to streamline the comprehension process. With ALex, judges experience a transformative use case where complex legal documents are deciphered intelligently, ensuring clarity, efficiency, and a deeper understanding of every case within constrained timelines.',
+      'Briefs serve as the cornerstone of information in civil proceedings, yet they often present challenges that impede the efficiency of judicial processes. These documents, while crucial, can be dense and complex, making it difficult for judges to quickly extract the key points and arguments.',
     imageSrc: '/brief.png',
+    items: USE_CASES,
   },
   ourTool: {
     id: 'our-tool',

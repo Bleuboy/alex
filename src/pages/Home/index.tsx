@@ -30,25 +30,6 @@ const HeaderSection = () => {
   );
 };
 
-const UseCaseSection = () => {
-  const content = JUDGES_DATA.useCase;
-
-  return (
-    <div
-      id="use-case"
-      className="flex flex-col justify-center min-h-screen pt-24"
-    >
-      <h2 className="text-3xl font-semibold text-center pb-4">
-        {content.title}
-      </h2>
-      <div className="flex flex-col sm:flex-row items-center gap-4">
-        <p className="description text-center">{content.description}</p>
-        <img className="w-1/2 sm:w-1/4" src={content.imageSrc} alt="Brief" />
-      </div>
-    </div>
-  );
-};
-
 const CompetitorsSection = () => {
   const content = JUDGES_DATA.competitors;
 
@@ -98,7 +79,7 @@ export const Home = () => {
       <NavigationBar />
       <div className="px-4 py-4 mx-auto max-w-7xl flex flex-col gap-16">
         <HeaderSection />
-        <UseCaseSection />
+        <InfoSection {...JUDGES_DATA.useCase} />
         <InfoSection {...JUDGES_DATA.ourTool} />
         <InfoSection {...JUDGES_DATA.technology} />
         <InfoSection {...JUDGES_DATA.dataPrivacy} />
