@@ -30,17 +30,25 @@ const Facts = () => {
 // We should make several api calls each containing a different prompt (easiet way to get it up and running)
 // assign each response to the different testimonies available below
 useEffect(() => {
-  if (PDF1 ) {
-    extractTextFromPdf1(PDF1.document).then(aspects => {
-      // Update state for both factual and legal texts
-      setFactualText(aspects.factual);
-      setLegalText(aspects.legal);
-    });
-  } else {
-    setFactualText('No court file available.');
-    setLegalText('No court file available.');
-  }
-}, [PDF1]);
+  const extractTextAndProcess = async (PDFDocument) => {
+    if (PDFDocument) {
+      try {
+        const aspects = await extractTextFromPdf1(PDFDocument.document);
+        setFactualText(aspects.factual);
+        setLegalText(aspects.legal);
+      } catch (error) {
+        console.error('Error processing PDF:', error);
+        setFactualText('Error processing file.');
+        setLegalText('Error processing file.');
+      }
+    } else {
+      setFactualText('No court file available.');
+      setLegalText('No court file available.');
+    }
+  };
+
+  extractTextAndProcess(documents.courtFiles[0]);
+}, [documents.courtFiles]);
 
   const extractTextFromPdf1 = async (PDF1) => {
     try {
