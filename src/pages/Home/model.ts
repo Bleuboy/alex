@@ -19,6 +19,7 @@ export interface AboutUsData extends BasicData {
 
 export interface InfoSectionData extends SectionData {
   items: Item[];
+  conclusion?: string;
 }
 
 export interface LandingPageData {

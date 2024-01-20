@@ -11,6 +11,11 @@ const USE_CASES: Item[] = [
     description:
       'Briefs are often inflated with references that are irrelevant to the case and hinder an efficient analysis of arguments.',
   },
+  {
+    title: 'Limited time per case',
+    description:
+      'The limited time available for reviewing each pleading increases the risk of important details being overlooked.',
+  },
 ];
 
 export const FEATURES: Item[] = [
@@ -80,6 +85,8 @@ export const NON_JUDGES_DATA: LandingPageData = {
       'Briefs serve as the cornerstone of information in civil proceedings, yet they often present challenges that impede the efficiency of judicial processes. These documents, while crucial, can be dense and complex, making it difficult for judges to quickly extract the key points and arguments.',
     imageSrc: '/brief.png',
     items: USE_CASES,
+    conclusion:
+      'Judges need better structured briefs that allow to find the necessary information more quickly.',
   },
   ourTool: {
     id: 'our-tool',

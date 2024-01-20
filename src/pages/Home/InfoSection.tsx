@@ -62,6 +62,7 @@ type InfoSectionProps = {
   description: string;
   imageSrc?: string;
   items: Item[];
+  conclusion?: string;
 };
 
 export const InfoSection = ({
@@ -70,6 +71,7 @@ export const InfoSection = ({
   description,
   imageSrc,
   items,
+  conclusion,
 }: InfoSectionProps) => {
   return (
     <div id={id} className="flex flex-col justify-center min-h-screen pt-24">
@@ -81,6 +83,9 @@ export const InfoSection = ({
         )}
       </div>
       <GridView items={items} />
+      {conclusion && (
+        <h2 className="text-lg text-center font-semibold pt-8">{conclusion}</h2>
+      )}
     </div>
   );
 };
