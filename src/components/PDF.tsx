@@ -1,8 +1,7 @@
-import 'react-pdf/dist/Page/TextLayer.css';
-
 import { useCallback, useState } from 'react';
+import { pdfjs, Document, Page } from 'react-pdf';
 
-import { Document, Page, pdfjs } from 'react-pdf';
+import 'react-pdf/dist/Page/TextLayer.css';
 
 import Button from './Button';
 
@@ -17,12 +16,13 @@ const PDF = ({ file, highlight }: PDFProps) => {
   const [numPages, setNumPages] = useState<number>(0);
   const [currentPage, setCurrentPage] = useState<number>(1);
 
-  const handleDocumentLoadSuccess = ({ numPages }: { numPages: number }) => {
+  const handleDocumentLoadSuccess = ({ numPages }) => {
     setNumPages(numPages);
   };
 
   const handleCustomTextRender = useCallback(
-    ({ str }: { str: string }) => {
+    //@ts-ignore
+    ({ str, itemIndex }) => {
       if (highlight.includes(str)) return `<mark>${str}</mark>`;
       else return str;
     },

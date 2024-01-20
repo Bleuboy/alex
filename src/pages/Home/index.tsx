@@ -17,7 +17,7 @@ const HeaderSection = () => {
         briefs and improve your understanding of the facts of the case.
       </p>
       <div className="flex gap-4">
-        {import.meta.env.VITE_APP_IS_EXTERNAL === 'false' && (
+        {import.meta.env.VITE_APP_IS_EXTERNAL === 'true' && (
           <Link to="/upload">
             <Button>Get Started</Button>
           </Link>
