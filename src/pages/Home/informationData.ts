@@ -25,25 +25,19 @@ export const FEATURES: Item[] = [
 
 export const TECHNOLOGY: Item[] = [
   {
-    title:
-      'Judicially tailored LLM for nuanced brief analysis with transparent results',
+    title: 'Familiar judicial interface',
     description:
-      'ALex incorporates a Judicially tailored Language Model (LLM) that refines legal brief analysis, ensuring nuanced understanding and providing transparent, insightful results.',
+      'Our interface is designed with familiarity in mind, making it easy for you to navigate and structure information according to judicial best practices. This ensures a seamless transition and a more efficient workflow.',
   },
   {
-    title: 'Encrypted data handling with privacy-centric-processing',
+    title: 'Judicially tailored LLM',
     description:
-      'Our technology prioritizes data security through encrypted handling, employing privacy-centric processing to safeguard sensitive legal information.',
+      'Our Large Language Model (LLM) is specifically tailored for the judicial sector. It provides nuanced brief analysis and presents results in a transparent manner, enabling you to make informed decisions.',
   },
   {
-    title: 'Automated case registration',
+    title: 'Encrypted data handling',
     description:
-      'Experience unparalleled efficiency with ALex’s automated case registration, streamlining the process and eliminating manual hassles for judges.',
-  },
-  {
-    title: 'Drag and drop application powered by AI',
-    description:
-      'ALex introduces a user-friendly drag-and-drop application, seamlessly powered by AI, to enhance user experience and simplify the navigation of legal documents.',
+      'We prioritize your privacy. Our system handles data with robust encryption and our processing methods are designed with a privacy-centric approach. This ensures your data remains secure and confidential at all times.',
   },
 ];
 
@@ -84,22 +78,22 @@ export const JUDGES_DATA: LandingPageData = {
   },
   ourTool: {
     id: 'our-tool',
-    title: 'Revolutionary Insights, Seamless Solutions',
+    title: 'Where can a Judge Assisstant support me?',
     description:
-      'Empower your legal journey with ALex: Explore cutting-edge features tailored for revolutionary insights and seamless solutions. From AI-enhanced factual analysis to intuitive drag-and-drop functionality, ALex transforms legal complexities into clarity. Experience consistent insights, enhanced decision accuracy, seamless workflow integration, and improved focus on intricate cases. Join the legal revolution with ALex – the future of judicial excellence.',
+      'Instead of spending time on manual analysis, ALex pre-classifies information in factual and legal arguments offering consistent and reliable insights, boosting efficiency and accuracy in case handling and makes time for more important tasks.',
     items: FEATURES,
-    imageSrc: '/images/home/features.png',
+    imageSrc: '/assistant.png',
   },
   technology: {
     id: 'technology',
-    title: 'AI at Your Fingertips: Seamless Power in Every Click',
+    title: 'What makes ALex unique?',
     description:
-      "Dive into the future of legal technology with ALex's cutting-edge features and a user interface that defines cool and clean. Our AI-driven tool not only simplifies the complex but redefines the user experience, making legal analysis intuitive and efficient. Explore the synergy of the coolest automations and a UI designed for clarity, ensuring that every interaction with ALex is a testament to the seamless power of AI innovation.",
+      'ALex was developed with the user in mind. We offer a familiar interface that judges know from their individual workarounds. ALex traces the arguments in the briff and offers transparency in the categorization of our models. Finally, we offer a highly secure platform that is suitable for use in public authorities.',
     items: TECHNOLOGY,
   },
   dataPrivacy: {
     id: 'data-privacy',
-    title: 'Your Privacy Matters: Our Commitment to Data Security',
+    title: 'How do we care about your data?',
     description:
       'At Alex, safeguarding your data is our utmost priority. We are dedicated to ensuring the confidentiality, integrity, and availability of your information. Our commitment to data protection is unwavering, and we adhere to stringent measures to maintain your privacy.',
     items: DATA_PRIVACY,

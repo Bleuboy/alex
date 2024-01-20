@@ -12,9 +12,9 @@ const HeaderSection = () => {
         Empower Your Judgements with <span className="text-success">AI</span>
       </h1>
       <p className="description">
-        Judges often struggle with chaotic structure, inflated text, and limited
-        time per case. ALex is here to help increase the structure of your
-        briefs and improve your understanding of the facts of the case.
+        Judges often lose a lot of time on finding the relevant information in
+        briefs. ALex is here to assist them in factual discovery and upgrade the
+        brief analysis with an AI Assitant.
       </p>
       <div className="flex gap-4">
         {import.meta.env.VITE_APP_IS_EXTERNAL === 'false' && (
@@ -50,7 +50,7 @@ const UseCaseSection = () => {
 };
 
 const CompetitorsSection = () => {
-  const content = JUDGES_DATA.useCase;
+  const content = JUDGES_DATA.competitors;
 
   return (
     <div
@@ -72,6 +72,7 @@ const CompetitorsSection = () => {
 
 const AboutUsSection = () => {
   const content = JUDGES_DATA.aboutUs;
+
   return (
     <div
       id={content.id}
