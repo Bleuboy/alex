@@ -45,7 +45,15 @@ const AlexLink = ({ className, children, ...props }: AlexLinkProps) => {
   );
 };
 
-export const NavigationBar = () => {
+type NavigationBarProps = {
+  isJudge: boolean;
+  onIsJudgeClick: () => void;
+};
+
+export const NavigationBar = ({
+  isJudge,
+  onIsJudgeClick,
+}: NavigationBarProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const node = useRef(null);
 
@@ -83,19 +91,19 @@ export const NavigationBar = () => {
       className="p-4 flex sticky top-0 bg-white bg-opacity-80 backdrop-blur-md z-10"
       ref={node}
     >
-      <div className="flex max-w-7xl w-full mx-auto justify-between items-center">
+      <div className="flex max-w-7xl w-full mx-auto justify-between items-center gap-4">
         <div className="flex items-center gap-4">
           <a href="#">
             <img src="/alex-logo.png" className="w-auto h-12" />
           </a>
-          <div className="hidden md:flex gap-4">
+          <div className="hidden lg:flex gap-4">
             {LINKS.map(({ href, title }) => (
               <AlexLink key={href} href={href}>
                 {title}
               </AlexLink>
             ))}
           </div>
-          <div className="md:hidden">
+          <div className="lg:hidden">
             <button
               className="font-semibold"
               onClick={() => setIsOpen((state) => !state)}
@@ -125,7 +133,21 @@ export const NavigationBar = () => {
             )}
           </div>
         </div>
-        <a href="#">
+        <label htmlFor="toggle" className="flex items-center cursor-pointer">
+          <div className="relative">
+            <input
+              type="checkbox"
+              id="toggle"
+              className="sr-only"
+              checked={isJudge}
+              onChange={onIsJudgeClick}
+            />
+            <div className="block bg-gray-600 w-14 h-8 rounded-full"></div>
+            <div className="dot absolute left-1 top-1 bg-white w-6 h-6 rounded-full transition"></div>
+          </div>
+          <p className="ml-2">Are you a Judge?</p>
+        </label>
+        <a href="#" className="flex">
           <img src="/alex-name.png" className="w-auto h-12" />
         </a>
       </div>
