@@ -115,7 +115,6 @@ export const JUDGES_DATA: LandingPageData = {
     title: 'Unleashing Precision in Legal Analysis',
     description:
       'ALex, where the coolest automations meet unparalleled ease of use, all powered by AI innovation. Elevate your legal insights effortlessly as ALex transforms complex cases into clear, concise analyses. With ALex, experience the pinnacle of legal assistance—effortless, powerful, and undeniably cool.',
-    imageSrc: '/competitors.png',
   },
   aboutUs: {
     id: 'about-us',
