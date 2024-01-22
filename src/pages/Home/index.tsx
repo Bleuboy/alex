@@ -17,16 +17,21 @@ const ContactButton = () => {
   );
 };
 
-const HeaderSection = () => {
+type HeaderSectionProps = {
+  isJudge: boolean;
+};
+
+const HeaderSection = ({ isJudge }: HeaderSectionProps) => {
   return (
     <div className="flex flex-col justify-center min-h-screen gap-12 max-w-[600px]">
       <h1 className="text-6xl font-semibold">
-        Empower Your Judgements with <span className="text-success">AI</span>
+        Empower {isJudge && 'Your'} Judgements with
+        <span className="text-success">AI</span>
       </h1>
       <p className="description">
-        Judges often lose a lot of time on finding the relevant information in
-        briefs. ALex is here to assist them in factual discovery and upgrade the
-        brief analysis with an AI Assitant.
+        {isJudge
+          ? 'As a judge, you may often find yourself spending a lot of time searching for relevant information in briefs. ALex is here to assist you in this factual discovery process, enhancing your brief analysis with the help of an AI Assistant.'
+          : 'Judges often lose a lot of time on finding the relevant information in briefs. ALex is here to assist them in factual discovery and upgrade the brief analysis with an AI Assitant'}
       </p>
       <div className="flex gap-4">
         {import.meta.env.VITE_APP_IS_EXTERNAL === 'false' ? (
@@ -115,7 +120,7 @@ export const Home = () => {
     <div>
       <NavigationBar isJudge={isJudge} onIsJudgeClick={toggleIsJudge} />
       <div className="px-4 py-4 mx-auto max-w-7xl flex flex-col gap-16">
-        <HeaderSection />
+        <HeaderSection isJudge={isJudge} />
         <InfoSection {...data.useCase} />
         <InfoSection {...data.ourTool} />
         <InfoSection {...data.technology} />
