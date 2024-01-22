@@ -9,22 +9,37 @@ import { LandingPageData } from './model';
 import { NavigationBar } from './NavigationBar';
 import { NON_JUDGES_DATA } from './NON_JUDGES_DATA';
 
-const HeaderSection = () => {
+const ContactButton = () => {
+  return (
+    <a href="mailto:info@alex.com?subject=ALex%20-%20Let's%20connect&body=Hi%20team%2C%0AI'd%20love%20to%20receive%20more%20info%20about%20your%20tool.%0A%0ABest">
+      <Button>Get in Contact</Button>
+    </a>
+  );
+};
+
+type HeaderSectionProps = {
+  isJudge: boolean;
+};
+
+const HeaderSection = ({ isJudge }: HeaderSectionProps) => {
   return (
     <div className="flex flex-col justify-center min-h-screen gap-12 max-w-[600px]">
       <h1 className="text-6xl font-semibold">
-        Empower Your Judgements with <span className="text-success">AI</span>
+        Empower {isJudge && 'Your'} Judgements with{' '}
+        <span className="text-success">AI</span>
       </h1>
       <p className="description">
-        Judges often lose a lot of time on finding the relevant information in
-        briefs. ALex is here to assist them in factual discovery and upgrade the
-        brief analysis with an AI Assitant.
+        {isJudge
+          ? 'As a judge, you may often find yourself spending a lot of time searching for relevant information in briefs. ALex is here to assist you in this factual discovery process, enhancing your brief analysis with the help of an AI Assistant.'
+          : 'Judges often lose a lot of time on finding the relevant information in briefs. ALex is here to assist them in factual discovery and upgrade the brief analysis with an AI Assitant'}
       </p>
       <div className="flex gap-4">
-        {import.meta.env.VITE_APP_IS_EXTERNAL === 'false' && (
+        {import.meta.env.VITE_APP_IS_EXTERNAL === 'false' ? (
           <Link to="/upload">
             <Button>Get Started</Button>
           </Link>
+        ) : (
+          <ContactButton />
         )}
         <Link to="/demo-video" target="_blank">
           <Button color="secondary">Watch Demo</Button>
@@ -54,12 +69,19 @@ const CompetitorsSection = ({ data }: CompetitorsSectionProps) => {
       <h2 className="text-3xl font-semibold text-center pb-4">
         {content.title}
       </h2>
-      <p className="text-center pb-16">{content.description}</p>
-      <img
-        className="w-full sm:w-1/2 mx-auto"
-        src={content.imageSrc}
-        alt="Competitors"
-      />
+      <p className="text-center pb-12">{content.description}</p>
+      <div className="flex flex-col md:flex-row justify-center items-center gap-8 px-4">
+        <img
+          className="md:w-1/2 mx-auto"
+          src="/comparison-table.png"
+          alt="Competitors Table"
+        />
+        <img
+          className="md:w-1/2 mx-auto"
+          src="/competitors.png"
+          alt="Competitors"
+        />
+      </div>
     </div>
   );
 };
@@ -74,7 +96,7 @@ const AboutUsSection = ({ data }: AboutUsSectionProps) => {
   return (
     <div
       id={content.id}
-      className="flex flex-col justify-center min-h-screen pt-24"
+      className="flex flex-col items-center min-h-screen pt-24"
     >
       <h2 className="text-3xl font-semibold text-center pb-8">
         {content.title}
@@ -86,6 +108,7 @@ const AboutUsSection = ({ data }: AboutUsSectionProps) => {
           </p>
         ))}
       </div>
+      <ContactButton />
     </div>
   );
 };
@@ -102,7 +125,7 @@ export const Home = () => {
     <div>
       <NavigationBar isJudge={isJudge} onIsJudgeClick={toggleIsJudge} />
       <div className="px-4 py-4 mx-auto max-w-7xl flex flex-col gap-16">
-        <HeaderSection />
+        <HeaderSection isJudge={isJudge} />
         <InfoSection {...data.useCase} />
         <InfoSection {...data.ourTool} />
         <InfoSection {...data.technology} />
