@@ -15,33 +15,39 @@ const Facts = () => {
   
   console.log(testimonies);
 
-  const aspects: Aspect[] = [/*
-    {
-      party: 'Claimant',
-      type: 'Factual',
-      text: "Der Vorfall ereignete sich am 21.09.2023",
-    },
-    {
-      party: 'Claimant',
-      type: 'Factual',
-      text: 'Die Handlungen des Angeklagten haben zu materiellen und nicht-materiellen Schäden geführt.',
-    },
-    {
-      party: 'Claimant',
-      type: 'Legal',
-      text: 'Es bestehe kein Zweifel daran, dass die vorliegenden Beweise die Forderungen stützen.',
-    },
-    {
-      party: 'Defendant',
-      type: 'Factual',
-      text: "Der Angeklagte bestreitet die gegen ihn erhobenen Vorwürfe. Die Handlung war nicht vorsätzlich.",
-    },
-    {
-      party: 'Defendant',
-      type: 'Legal',
-      text: ' Es gibt Faktoren und Umstände, die nicht angemessen berücksichtigt wurden und die eine Unschuld belegen können',
-    },
-  */];
+  const aspects: Aspect[] = facts.aspects;
+
+
+  console.log(aspects);
+
+
+  // const aspects: Aspect[] = [/*
+  //   {
+  //     party: 'Claimant',
+  //     type: 'Factual',
+  //     text: "Der Vorfall ereignete sich am 21.09.2023",
+  //   },
+  //   {
+  //     party: 'Claimant',
+  //     type: 'Factual',
+  //     text: 'Die Handlungen des Angeklagten haben zu materiellen und nicht-materiellen Schäden geführt.',
+  //   },
+  //   {
+  //     party: 'Claimant',
+  //     type: 'Legal',
+  //     text: 'Es bestehe kein Zweifel daran, dass die vorliegenden Beweise die Forderungen stützen.',
+  //   },
+  //   {
+  //     party: 'Defendant',
+  //     type: 'Factual',
+  //     text: "Der Angeklagte bestreitet die gegen ihn erhobenen Vorwürfe. Die Handlung war nicht vorsätzlich.",
+  //   },
+  //   {
+  //     party: 'Defendant',
+  //     type: 'Legal',
+  //     text: ' Es gibt Faktoren und Umstände, die nicht angemessen berücksichtigt wurden und die eine Unschuld belegen können',
+  //   },
+  // */];
 
   const handleToggleFilter = () => {
     setFilter((filter) => (filter === 'aspect' ? 'testimony' : 'aspect'));

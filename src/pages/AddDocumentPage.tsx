@@ -50,14 +50,19 @@ const AddDocumentPage = () => {
 
     try {
       const facts = await sendToBackend(documents.courtFiles.map((courtFile) => courtFile.document));
-
+      console.log(facts)
       dispatch(setFacts({
         testimonies: facts.map((fact: { claimedBy: any; type: any; statement: any; }) => ({
           party: fact.claimedBy,
           type: fact.type,
           text: fact.statement,
         })),
-        aspects: [],
+        aspects: facts.map((fact: { claimedBy2: any; type2: any; statement2: any; }) => ({
+          party: fact.claimedBy2,
+          type: fact.type2,
+          text: fact.statement2,
+        }))
+        ,
       }));
 
       navigate('/facts');
