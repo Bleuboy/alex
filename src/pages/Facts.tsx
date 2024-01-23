@@ -1,164 +1,59 @@
-import { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { pdfjs } from 'react-pdf';
-import axios from 'axios';
+import { useState } from 'react';
 
-import {
-  CourtFile,
-  RootState,
-} from '../types';
+import { useSelector } from 'react-redux';
+
 import Button from '../components/Button';
 import CrossExam from '../components/CrossExam';
-import { Aspect, Filter, Testimony } from '../types';
-import { TextItem } from 'pdfjs-dist/types/src/display/api';
-
+import {
+  Aspect,
+  Filter,
+  RootState,
+  Testimony,
+} from '../types';
 
 const Facts = () => {
-  const [filter, setFilter] = useState<Filter>('aspect');
-  const [extractedText, setExtractedText] = useState<string>('');
-  const documents = useSelector((state: RootState) => state.documents);
-  const [factualText, setFactualText] = useState<string>('');
-  const [legalText, setLegalText] = useState<string>('');
+  const facts = useSelector((state: RootState) => state.facts);
+  console.log(facts);
 
+  const [filter, setFilter] = useState<Filter>('testimony');
 
-  const PDF1 = documents.courtFiles[0] //Claimant's
-  const PDF2 = documents.courtFiles[1] //Defendant's
-  console.log(PDF1)
-  console.log(PDF2)
-
-//After successfuly extracting the text from the PDFs
-// We should make several api calls each containing a different prompt (easiet way to get it up and running)
-// assign each response to the different testimonies available below
-
-
-useEffect(() => {
-  const extractTextAndProcess = async (PDFDocument) => {
-    if (PDFDocument) {
-      try {
-        const aspects = await extractTextFromPdf1(PDFDocument.document);
-        setFactualText(aspects.factual);
-        setLegalText(aspects.legal);
-      } catch (error) {
-        console.error('Error processing PDF:', error);
-        setFactualText('Error processing file.');
-        setLegalText('Error processing file.');
-      }
-    } else {
-      setFactualText('No court file available.');
-      setLegalText('No court file available.');
-    }
-  };
-
-  extractTextAndProcess(PDF1);
-}, );
-
-  const extractTextFromPdf1 = async (PDF1) => {
-    try {
-      const pdf = await pdfjs.getDocument(PDF1).promise;
-      let extractedText = '';
+  const testimonies: Testimony[] = facts.testimonies;
   
-      for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
-        const page = await pdf.getPage(pageNum);
-        const textContent = await page.getTextContent();
-        const pageText = textContent.items.map(item => item.str).join(' ');
-        extractedText += pageText + '\n';
-      }
-      console.log(extractedText)
-  
-      // After extracting text from PDF, call OpenAI API to extract facts
-      const extractedAspects = await ExtractFactualAndLegalAspects(extractedText);
-      
-      // Update the state with the extracted texts
-      setFactualText(extractedAspects.factual);
-      setLegalText(extractedAspects.legal);
-  
-      return extractedAspects; // Return the extracted factual and legal information
-    } catch (error) {
-      console.error('Error in extractTextFromPdf:', error);
-    }
-  };
- 
+  console.log(testimonies);
 
-const ExtractFactualAndLegalAspects = async (text) => {
-  try {
-    //used for testing, remove later when text is properly extracted
-    text = "The plaintiff, John Doe, was driving his car on the highway when he was hit by the defendant, Jane Doe. The plaintiff suffered a broken leg and was taken to the hospital. The plaintiff is suing the defendant for damages."
-    const factualPrompt = `Extract factual information from the following text:\n\n${text}`;
-    const legalPrompt = `Extract legal information from the following text:\n\n${text}`;
-
-    const factualResponse = await axios.post('https://api.openai.com/v1/engines/davinci/codex/completions', {
-      prompt: factualPrompt,
-      max_tokens: 1024
-    }, {
-      headers: {
-        'Authorization': ' OPENAI_API_KEY'
-      }
-    });
-
-    const legalResponse = await axios.post('https://api.openai.com/v1/engines/davinci/codex/completions', {
-      prompt: legalPrompt,
-      max_tokens: 1024
-    }, {
-      headers: {
-        'Authorization': ' OPENAI_API_KEY'
-      }
-    });
-
-    return {
-      factual: factualResponse.data.choices[0].text,
-      legal: legalResponse.data.choices[0].text
-    };
-  } catch (error) {
-    console.error('Error with OpenAI API:', error);
-  }
-};
+  const aspects: Aspect[] = facts.aspects;
 
 
-  
+  console.log(aspects);
 
 
-  
-  
-  const testimonies: Testimony[] = [
-    {
-      party: 'Claimant',
-      type: 'Disputed',
-      text: extractedText || 'Loading text from court file...',
-    },
-    {
-      party: 'Defendant',
-      type: 'Undisputed',
-      text: 'On the day of the accident, the weather conditions were foggy, with limited visibility.',
-    },
-    {
-      party: 'Defendant',
-      type: 'Undisputed',
-      text: "Defendant argues that claimant's injury existed before the accident and were not a direct result.",
-    },
-  ];
-
-  const aspects: Aspect[] = [
-    {
-      party: 'Claimant',
-      type: 'Factual',
-      text: factualText || 'Claimant argues that medical expenses should be attributed to the defendant.',
-    },
-    {
-      party: 'Claimant',
-      type: 'Legal',
-      text: legalText || 'On the day of the accident, the weather conditions were foggy, with limited visibility.',
-    },
-    {
-      party: 'Defendant',
-      type: 'Factual',
-      text: "Defendant argues that claimant's injury existed before the accident and were not a direct result.",
-    },
-    {
-      party: 'Defendant',
-      type: 'Legal',
-      text: ' On the day of the accident, the weather conditions were foggy, with limited visibility.',
-    },
-  ];
+  // const aspects: Aspect[] = [/*
+  //   {
+  //     party: 'Claimant',
+  //     type: 'Factual',
+  //     text: "Der Vorfall ereignete sich am 21.09.2023",
+  //   },
+  //   {
+  //     party: 'Claimant',
+  //     type: 'Factual',
+  //     text: 'Die Handlungen des Angeklagten haben zu materiellen und nicht-materiellen Schäden geführt.',
+  //   },
+  //   {
+  //     party: 'Claimant',
+  //     type: 'Legal',
+  //     text: 'Es bestehe kein Zweifel daran, dass die vorliegenden Beweise die Forderungen stützen.',
+  //   },
+  //   {
+  //     party: 'Defendant',
+  //     type: 'Factual',
+  //     text: "Der Angeklagte bestreitet die gegen ihn erhobenen Vorwürfe. Die Handlung war nicht vorsätzlich.",
+  //   },
+  //   {
+  //     party: 'Defendant',
+  //     type: 'Legal',
+  //     text: ' Es gibt Faktoren und Umstände, die nicht angemessen berücksichtigt wurden und die eine Unschuld belegen können',
+  //   },
+  // */];
 
   const handleToggleFilter = () => {
     setFilter((filter) => (filter === 'aspect' ? 'testimony' : 'aspect'));

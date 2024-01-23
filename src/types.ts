@@ -29,6 +29,12 @@ export interface CourtState {
   courtFiles: CourtFile[];
 }
 
+export interface FactState {
+  testimonies: Testimony[],
+  aspects: Aspect[],
+}
+
 export interface RootState {
   documents: CourtState;
+  facts: FactState;
 }

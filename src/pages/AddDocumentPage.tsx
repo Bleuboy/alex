@@ -1,16 +1,20 @@
 import { useState } from 'react';
 
 import clsx from 'clsx';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import Button from '../components/Button';
 import Card from '../components/Card';
 import CircleLoader from '../components/CircleLoader';
 import Upload from '../components/Upload';
+
 import { RootState } from '../types';
+import { setFacts } from '../redux/slices/facts';
 
 const AddDocumentPage = () => {
+  const dispatch = useDispatch();
+  
   const navigate = useNavigate();
 
   const documents = useSelector((state: RootState) => state.documents);
@@ -19,20 +23,56 @@ const AddDocumentPage = () => {
 
   const [progress, setProgress] = useState<number>(0);
 
-  const handleAnalyze = () => {
+  const sendToBackend = async (files: File[]) => {
+    const formData = new FormData();
+
+    for (let file of files) {
+      formData.append('files', file);
+    }
+
+    const result = await fetch('/api/analyze', {
+      method: 'POST',
+      body: formData,
+    })
+    .then(response => response.json())
+    .catch(() => null);
+
+    return result;
+  }
+
+  const handleAnalyze = async () => {
     setLoading(true);
     setProgress(0);
 
     const progressInterval = setInterval(() => {
-      setProgress((progress) => (progress += 1));
+      setProgress((progress) => ((progress += 1) % 98));
     }, 100);
 
-    setTimeout(() => {
-      clearInterval(progressInterval);
-      setLoading(false);
+    try {
+      const facts = await sendToBackend(documents.courtFiles.map((courtFile) => courtFile.document));
+      console.log(facts)
+      dispatch(setFacts({
+        testimonies: facts.map((fact: { claimedBy: any; type: any; statement: any; }) => ({
+          party: fact.claimedBy,
+          type: fact.type,
+          text: fact.statement,
+        })),
+        aspects: facts.map((fact: { claimedBy2: any; type2: any; statement2: any; }) => ({
+          party: fact.claimedBy2,
+          type: fact.type2,
+          text: fact.statement2,
+        }))
+        ,
+      }));
 
       navigate('/facts');
-    }, 100 * 99);
+    } catch(ex) {
+      console.error(ex);
+    } finally {
+      clearInterval(progressInterval);
+      setLoading(true);
+      setProgress(0);
+    }
   };
 
   return (

@@ -44,6 +44,11 @@ const HeaderSection = ({ isJudge }: HeaderSectionProps) => {
         <Link to="/demo-video" target="_blank">
           <Button color="secondary">Watch Demo</Button>
         </Link>
+  
+        <Link to="/upload" target="_blank">
+          <Button color="primary">Get Started</Button>
+        </Link>
+
       </div>
     </div>
   );
