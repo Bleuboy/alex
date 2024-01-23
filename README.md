@@ -1,6 +1,8 @@
 ![ALex](./public/alex-name.png)
 
-This project was bootstrapped with [Vite](https://vitejs.dev/) and uses [React](https://reactjs.org/).
+## Project Description
+
+ALex is an AI Assistant designed to assist judges in factual discovery and enhance brief analysis. Built with [Vite](https://vitejs.dev/) and [React](https://reactjs.org/), ALex uses advanced encryption standards to ensure data security and integrity. It's designed to be available when you need it, using reliable cloud-based solutions to ensure data accessibility without compromising on security. ALex does not store any data and does not use data provided to train its own models or improve its service offering. The cloud-based solution hosts the model on a server located in Germany, ensuring that data remains within the country and is not shared with any third parties.
 
 ## Getting Started
 
